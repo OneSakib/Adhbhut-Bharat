@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome to Adhbhut Bharat {% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'Bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" crossorigin="anonymous">
+    <link href="{% static 'Bootstrap/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+    <link rel="icon" href="{% static 'logo.png' %}">
+    <style>
+        .navbar-nav {
+            margin-left: auto;
+        }
+
+        footer {
+            position: relative;
+            bottom: 0;
+        }
+
+        .navbar {
+            color: white;
+            background-color: #d52574;
+        }
+
+        .navbar .btn {
+            border: 2px solid pink;
+            color: white;
+            background-color: #0f5132;
+        }
+
+    </style>
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'ADBH:index' %}"><img src="{% static 'logo.png' %}" style="width: 50px">
+            &nbsp; Adhbhut
+            Bharat</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item ">
+                    <a class="nav-link {% if  Historyactive %} active {% endif %}" aria-current="page"
+                       href="{% url 'ADBH:historicalplaces' %}">Historical
+                        Places</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if  indianhistoryactive %}active {% endif %}" aria-current="page"
+                       href="{% url 'ADBH:indianhistory' %}">Indian
+                        History</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if  currentindianactive %}active {% endif %}" aria-current="page"
+                       href="{% url 'ADBH:currentindia' %}">Current
+                        India</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if  freedomactive %}active {% endif %}" aria-current="page"
+                       href="{% url 'ADBH:freedomfighter' %}">Freedom
+                        Fighter</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if  factactive %}active {% endif %}" aria-current="page"
+                       href="{% url 'ADBH:factblog' %}">Facts Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if  customactive %}active {% endif %}" aria-current="page"
+                       href="{% url 'ADBH:customandtradition' %}">India
+                        Customs and Traditions</a>
+                </li>
+            </ul>
+            <form class="d-flex" role="search" action="{% url 'ADBH:searched' %}" method="get">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                       name="search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            {% csrf_token %}
+        </div>
+    </div>
+</nav>
+{% block content %}
+{% endblock %}
+<!--  Footer  !-->
+<div class="container-lg">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                <svg class="bi" width="30" height="24">
+
+                </svg>
+            </a>
+            <span class="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span>
+        </div>
+
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3"><a class="text-muted" href="#">
+                <svg class="bi" width="24" height="24">
+
+                </svg>
+            </a></li>
+            <li class="ms-3"><a class="text-muted" href="#">
+                <svg class="bi" width="24" height="24">
+
+                </svg>
+            </a></li>
+            <li class="ms-3"><a class="text-muted" href="#">
+                <svg class="bi" width="24" height="24">
+
+                </svg>
+            </a></li>
+        </ul>
+    </footer>
+</div>
+</body>
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="{% static 'Bootstrap/js/bootstrap.bundle.min.js' %}" crossorigin="anonymous"></script>
+<script src="{% static 'Bootstrap/jquery/jquery-3.6.0.js' %}"></script>
+{% block js %}
+{% endblock %}
+
+</html>
