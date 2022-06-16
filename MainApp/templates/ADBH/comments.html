@@ -1,0 +1,209 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container-lg mt-2">
+        <h5>Historical Comments</h5>
+        <table class="table table-responsive">
+            <thead>
+            <tr>
+                <th>Sr No.</th>
+                <th>Name</th>
+                <th>Post</th>
+                <th>Email</th>
+                <th>Comment</th>
+                <th>Time</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for d in historical %}
+                <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ d.name }}</td>
+                    <td>{{ d.post.title }}</td>
+                    <td>{{ d.email }}</td>
+                    <td>{{ d.body }}</td>
+                    <td>{{ d.timestamp }}</td>
+                    <td>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <input value="historical" type="hidden" name="object">
+                            <input value="{{ d.pk }}" type="hidden" name="pk">
+                            <input value="Delete" type="submit" class="btn btn-danger">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <h5>Indian History</h5>
+        <table class="table table-responsive">
+            <thead>
+            <tr>
+                <th>Sr No.</th>
+                <th>Name</th>
+                <th>Post</th>
+                <th>Email</th>
+                <th>Comment</th>
+                <th>Time</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for d in indianhistory %}
+                <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ d.name }}</td>
+                    <td>{{ d.post.title }}</td>
+                    <td>{{ d.email }}</td>
+                    <td>{{ d.body }}</td>
+                    <td>{{ d.timestamp }}</td>
+                    <td>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <input value="indianhistory" type="hidden" name="object">
+                            <input value="{{ d.pk }}" type="hidden" name="pk">
+                            <input value="Delete" type="submit" class="btn btn-danger">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <h5>Current India</h5>
+        <table class="table table-responsive">
+            <thead>
+            <tr>
+                <th>Sr No.</th>
+                <th>Name</th>
+                <th>Post</th>
+                <th>Email</th>
+                <th>Comment</th>
+                <th>Time</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for d in currentindia %}
+                <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ d.name }}</td>
+                    <td>{{ d.post.title }}</td>
+                    <td>{{ d.email }}</td>
+                    <td>{{ d.body }}</td>
+                    <td>{{ d.timestamp }}</td>
+                    <td>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <input value="currentindia" type="hidden" name="object">
+                            <input value="{{ d.pk }}" type="hidden" name="pk">
+                            <input value="Delete" type="submit" class="btn btn-danger">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <h5>Freedom Fighter</h5>
+        <table class="table table-responsive">
+            <thead>
+            <tr>
+                <th>Sr No.</th>
+                <th>Name</th>
+                <th>Post</th>
+                <th>Email</th>
+                <th>Comment</th>
+                <th>Time</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for d in freedomfighter %}
+                <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ d.name }}</td>
+                    <td>{{ d.post.title }}</td>
+                    <td>{{ d.email }}</td>
+                    <td>{{ d.body }}</td>
+                    <td>{{ d.timestamp }}</td>
+                    <td>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <input value="freedomfighter" type="hidden" name="object">
+                            <input value="{{ d.pk }}" type="hidden" name="pk">
+                            <input value="Delete" type="submit" class="btn btn-danger">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <h5>Fact Blog</h5>
+        <table class="table table-responsive">
+            <thead>
+            <tr>
+                <th>Sr No.</th>
+                <th>Name</th>
+                <th>Post</th>
+                <th>Email</th>
+                <th>Comment</th>
+                <th>Time</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for d in factblog %}
+                <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ d.name }}</td>
+                    <td>{{ d.post.title }}</td>
+                    <td>{{ d.email }}</td>
+                    <td>{{ d.body }}</td>
+                    <td>{{ d.timestamp }}</td>
+                    <td>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <input value="factblog" type="hidden" name="object">
+                            <input value="{{ d.pk }}" type="hidden" name="pk">
+                            <input value="Delete" type="submit" class="btn btn-danger">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <h5>Culture and Traditions</h5>
+        <table class="table table-responsive">
+            <thead>
+            <tr>
+                <th>Sr No.</th>
+                <th>Name</th>
+                <th>Post</th>
+                <th>Email</th>
+                <th>Comment</th>
+                <th>Time</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for d in custom %}
+                <tr>
+                    <th>{{ forloop.counter }}</th>
+                    <td>{{ d.name }}</td>
+                    <td>{{ d.post.title }}</td>
+                    <td>{{ d.email }}</td>
+                    <td>{{ d.body }}</td>
+                    <td>{{ d.timestamp }}</td>
+                    <td>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <input value="custom" type="hidden" name="object">
+                            <input value="{{ d.pk }}" type="hidden" name="pk">
+                            <input value="Delete" type="submit" class="btn btn-danger">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

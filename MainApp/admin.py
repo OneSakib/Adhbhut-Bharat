@@ -9,6 +9,7 @@ class HistoricalPlaceAdmin(admin.ModelAdmin):
     list_display = ['title']
     list_filter = ['timestamp']
     search_fields = ['title', 'post']
+    prepopulated_fields = {'slug': ('title',)}
 
 
 @admin.register(IndianHistoryModel)
@@ -16,6 +17,7 @@ class IndianHistoryAdmin(admin.ModelAdmin):
     list_display = ['title']
     list_filter = ['timestamp']
     search_fields = ['title', 'post']
+    prepopulated_fields = {'slug': ('title',)}
 
 
 @admin.register(CurrentIndianModel)
@@ -23,6 +25,7 @@ class CurrentIndiaAdmin(admin.ModelAdmin):
     list_display = ['title']
     list_filter = ['timestamp']
     search_fields = ['title', 'post']
+    prepopulated_fields = {'slug': ('title',)}
 
 
 @admin.register(FreedomFighterModel)
@@ -30,6 +33,7 @@ class FreedomFighterAdmin(admin.ModelAdmin):
     list_display = ['title']
     list_filter = ['timestamp']
     search_fields = ['title', 'post']
+    prepopulated_fields = {'slug': ('title',)}
 
 
 @admin.register(FactBlogModel)
@@ -37,6 +41,7 @@ class FactBlogAdmin(admin.ModelAdmin):
     list_display = ['title']
     list_filter = ['timestamp']
     search_fields = ['title', 'post']
+    prepopulated_fields = {'slug': ('title',)}
 
 
 @admin.register(CustomAndTraditionModel)
@@ -44,6 +49,7 @@ class CustomAndTraditionAdmin(admin.ModelAdmin):
     list_display = ['title']
     list_filter = ['timestamp']
     search_fields = ['title', 'post']
+    prepopulated_fields = {'slug': ('title',)}
 
 
 @admin.register(HistoricalPlaceComments)

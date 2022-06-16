@@ -1,8 +1,14 @@
 {% extends 'base.html' %}
 {% block css %}
     <style>
-        .carousel-item img {
-            height: 500px;
+        img {
+            width: 100%;
+        }
+        @media (max-width: 700px){
+            .slideimage
+            {
+                height: 500px;
+            }
         }
     </style>
 {% endblock %}
@@ -21,7 +27,7 @@
             <div class="carousel-inner">
                 {% for slide in data.slides %}
                     <div class="carousel-item {% if forloop.first %} active{% endif %}">
-                        <img src="{{ slide.image.url }}" class="d-block w-100 " alt="...">
+                        <img src="{{ slide.image.url }}" class="slideimage" alt="not found">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>{{ slide.name }}</h5>
                             <p>{{ slide.desc }}.</p>
@@ -43,17 +49,17 @@
         </div>
     </div>
     <!-- latest post !-->
-    <div class="container-lg mt-2">
-        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-4">
+    <div class="container-lg  mt-2">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
             {% for d in data.historicalplace %}
                 <div class="col">
                     <div class="card shadow-sm">
-                        <img src="{{ d.image.url }}">
+                        <img src="{{ d.image.url }}" alt="not found">
                         <div class="card-body">
-                            <p class="card-text">{{ d.title }}.</p>
+                            <p class="card-text text-center">{{ d.title }}.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a href="{% url 'ADBH:historicalplacesdetail' d.pk %}"
+                                    <a href="{% url 'ADBH:historicalplacesdetail' d.slug %}"
                                        class="btn btn-sm btn-outline-secondary text-decoration-none">View</a>
                                 </div>
                                 <small class="text-muted">{{ d.timestamp|timesince }} ago</small>
@@ -65,12 +71,12 @@
             {% for d in data.freedomfighter %}
                 <div class="col">
                     <div class="card shadow-sm">
-                        <img src="{{ d.image.url }}">
+                        <img src="{{ d.image.url }}" alt="not found">
                         <div class="card-body">
-                            <p class="card-text">{{ d.title }}.</p>
+                            <p class="card-text text-center">{{ d.title }}.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a href="{% url 'ADBH:freedomfighterdetail' d.pk %}"
+                                    <a href="{% url 'ADBH:freedomfighterdetail' d.slug %}"
                                        class="btn btn-sm btn-outline-secondary text-decoration-none">View</a>
                                 </div>
                                 <small class="text-muted">{{ d.timestamp|timesince }} ago</small>
@@ -82,12 +88,12 @@
             {% for d in data.factblog %}
                 <div class="col">
                     <div class="card shadow-sm">
-                        <img src="{{ d.image.url }}">
+                        <img src="{{ d.image.url }}" alt="not found">
                         <div class="card-body">
-                            <p class="card-text">{{ d.title }}.</p>
+                            <p class="card-text text-center">{{ d.title }}.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a href="{% url 'ADBH:factblogdetail' d.pk %}"
+                                    <a href="{% url 'ADBH:factblogdetail' d.slug %}"
                                        class="btn btn-sm btn-outline-secondary text-decoration-none">View</a>
                                 </div>
                                 <small class="text-muted">{{ d.timestamp|timesince }} ago</small>
@@ -99,12 +105,12 @@
             {% for d in data.customandtradition %}
                 <div class="col">
                     <div class="card shadow-sm">
-                        <img src="{{ d.image.url }}">
+                        <img src="{{ d.image.url }}" alt="not found">
                         <div class="card-body">
-                            <p class="card-text">{{ d.title }}.</p>
+                            <p class="card-text text-center">{{ d.title }}.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a href="{% url 'ADBH:customandtraditiondetail' d.pk %}"
+                                    <a href="{% url 'ADBH:customandtraditiondetail' d.slug %}"
                                        class="btn btn-sm btn-outline-secondary text-decoration-none">View</a>
                                 </div>
                                 <small class="text-muted">{{ d.timestamp|timesince }} ago</small>
@@ -119,136 +125,145 @@
     </div>
     <!-- Summary indian history !-->
     <div class="container-lg mt-3">
-        <h5>What is the brief history of India?</h5>
-        <p>The history of India starts with the existence of India itself as It located in the continent of Asia, India
-            covers 2,973,193 square kilometers of land and 314,070 square kilometers of water. </p>
-        <p>Making it the 7th largest nation in the world with a total area of 3,287,263 square kilometers. Surrounded by
-            Bhutan, Nepal, and Bangladesh to the North East, China to the North, Pakistan to the North West, and Sri
-            Lanka on the South East coast. </p>
-        <p>India is a land of ancient civilizations. India's social, economic, and cultural configurations are the
-            products of a long process of regional expansion. Indian history begins with the birth of the Indus Valley
-            Civilization and the coming of the Aryans. These two phases are usually described as the pre-Vedic and Vedic
-            age. Hinduism arose in the Vedic period.</p>
-        <p>The fifth-century saw the unification of India under Ashoka, who had converted to Buddhism, and it is in his
-            reign that Buddhism spread in many parts of Asia. In the eighth century, Islam came to India for the first
-            time and by the eleventh century had firmly established itself in India as a political force. It resulted in
-            the formation of the Delhi Sultanate, which was finally succeeded by the Mughal Empire, under which India
-            once again achieved a large measure of political unity.</p>
-        <p>It was in the 17th century that the Europeans came to India. This coincided with the disintegration of the
-            Mughal Empire, paving the way for regional states. In the contest for supremacy, the English emerged
-            'victors'. The Rebellion of 1857-58, which sought to restore Indian supremacy, was crushed; and with the
-            subsequent crowning of Victoria as Empress of India, the incorporation of India into the empire was
-            complete. It was followed by India's struggle for independence, which we got in the year 1947. Here is a
-            brief timeline about the history of India:</p>
-        <h5>Ancient India History</h5>
-        <p>The History of India begins with the Indus Valley Civilization and the coming of the Aryans. These two phases
-            are generally described as the pre-Vedic and Vedic periods. The earliest literary source that sheds light on
-            India's past is the Rig Veda. It is difficult to date this work with any accuracy on the basis of tradition
-            and ambiguous astronomical information contained in the hymns. Indus valley civilization, which flourished
-            between 2800 BC and 1800 BC, had an advanced and flourishing economic system. The Indus valley people
-            practiced agriculture, domesticated animals, made tools and weapons from copper, bronze, and tin and even
-            traded with some Middle East countries.</p>
-        <h5>The Indus Valley Civilization</h5>
+        <h5>भारत का संक्षिप्त इतिहास क्या है?</h5>
+        <p>भारत का इतिहास भारत के अस्तित्व के साथ ही शुरू होता है क्योंकि यह एशिया महाद्वीप, भारत में स्थित है
+            2,973,193 वर्ग किलोमीटर भूमि और 314,070 वर्ग किलोमीटर पानी शामिल है. </p>
+        <p>3,287,263 वर्ग किलोमीटर के कुल क्षेत्रफल के साथ इसे दुनिया का 7वां सबसे बड़ा देश बनाना। से घिरा
+            उत्तर पूर्व में भूटान, नेपाल और बांग्लादेश, उत्तर में चीन, उत्तर पश्चिम में पाकिस्तान और श्री
+            दक्षिण पूर्व तट पर लंका. </p>
+        <p>भारत प्राचीन सभ्यताओं का देश है। भारत के सामाजिक, आर्थिक और सांस्कृतिक विन्यास हैं
+            क्षेत्रीय विस्तार की एक लंबी प्रक्रिया के उत्पाद। भारतीय इतिहास सिंधु घाटी के जन्म के साथ शुरू होता है
+            सभ्यता और आर्यों का आगमन। इन दो चरणों को आमतौर पर पूर्व-वैदिक और वैदिक के रूप में वर्णित किया जाता है
+            आयु। वैदिक काल में हिंदू धर्म का उदय हुआ.</p>
+        <p>पांचवीं शताब्दी में अशोक के अधीन भारत का एकीकरण देखा गया, जो बौद्ध धर्म में परिवर्तित हो गया था, और यह उसी
+            में है
+            शासन काल में बौद्ध धर्म एशिया के कई भागों में फैल गया। आठवीं शताब्दी में पहली बार इस्लाम भारत आया
+            समय और ग्यारहवीं शताब्दी तक भारत में खुद को एक राजनीतिक ताकत के रूप में मजबूती से स्थापित कर लिया था। इसका
+            परिणाम हुआ
+            दिल्ली सल्तनत का गठन, जो अंततः मुगल साम्राज्य द्वारा सफल हुआ, जिसके तहत भारत
+            एक बार फिर राजनीतिक एकता का एक बड़ा पैमाना हासिल किया।</p>
+        <p>17वीं शताब्दी में यूरोपीय लोग भारत आए। यह के विघटन के साथ मेल खाता था
+            मुगल साम्राज्य, क्षेत्रीय राज्यों के लिए मार्ग प्रशस्त कर रहा है। वर्चस्व की होड़ में अंग्रेज उभरे
+            'विजेता'। 1857-58 का विद्रोह, जिसने भारतीय वर्चस्व को बहाल करने की मांग की थी, कुचल दिया गया; और के साथ
+            भारत की महारानी के रूप में विक्टोरिया की ताजपोशी, साम्राज्य में भारत का समावेश था
+            पूरा। इसके बाद भारत का स्वतंत्रता संग्राम हुआ, जो हमें वर्ष 1947 में मिला। यहाँ है a
+            भारत के इतिहास के बारे में संक्षिप्त समयरेखा:</p>
+        <h5>प्राचीन भारत का इतिहास</h5>
+        <p>भारत का इतिहास सिंधु घाटी सभ्यता और आर्यों के आने से शुरू होता है। ये दो चरण
+            आमतौर पर पूर्व-वैदिक और वैदिक काल के रूप में वर्णित हैं। सबसे पहला साहित्यिक स्रोत जो इस पर प्रकाश डालता है
+            भारत का अतीत ऋग्वेद है। परंपरा के आधार पर इस कार्य को किसी भी सटीकता के साथ निर्धारित करना कठिन है
+            और भजनों में निहित अस्पष्ट खगोलीय जानकारी। सिन्धु घाटी सभ्यता, जो फली-फूली
+            2800 ईसा पूर्व और 1800 ईसा पूर्व के बीच, एक उन्नत और समृद्ध आर्थिक प्रणाली थी। सिंधु घाटी के लोग
+            कृषि का अभ्यास करते थे, पालतू जानवर, तांबे, कांसे और टिन और यहां तक ​​​​कि औजार और हथियार बनाते थे
+            मध्य पूर्व के कुछ देशों के साथ व्यापार.</p>
+        <h5>सिंधु घाटी सभ्यता</h5>
         <p>
-            A long time ago, in the eastern world, there rose a few civilizations. The main reasons for the rise of
-            these urban civilizations were access to rivers, which served various functions of human beings. Along with
-            the Mesopotamian civilization and the Egyptian civilization, rose the Indus Valley civilization spanning
-            Northwest India and modern-day Pakistan. The largest amongst the three civilizations, the Indus Valley
-            civilization flourished around 2600 BC, at which time agriculture in India started flourishing. The fertile
-            Indus valley made it possible for agriculture to be carried out on a large scale. The most well-known towns
-            of the Indus Valley in today’s date are Mohenjo Daro and Harappa. Unearthing these two towns showed
-            excavators glimpses into the richness of the Indus Valley civilization, evidenced in ruins and things like
-            household articles, war weapons, gold and silver ornament - and so on. The people of the Indus Valley
-            civilization lived in well-planned towns and well-designed houses made of baked bricks. In an era of
-            developments and prosperity, civilization, unfortunately, came to an end by around 1300 BC, mainly due to
-            natural calamities. </p>
-        <h5>Vedic Civilization</h5>
-        <p>The next era that India saw was that of the Vedic civilization, flourishing along the river Saraswati, named
-            after the Vedas, which depict the early literature of the Hindus. The two greatest epics of this period were
-            the Ramayana and the Mahabharata, still held in great reverence by the followers of Hinduism</p>
-        <h5>Buddhist Era</h5>
-        <p>Next came the Buddhist era, during the time of the Mahajanapadas which were the sixteen great powers, during
-            the 7th and the 6th centuries BC. Prominent powers at the time were the Sakyas of Kapilavastu and the
-            Licchavis of Vaishali. Buddha, whose original name was Siddhartha Gautam, was born in Lumbini near
-            Kapilavastu and was the founder of Buddhism - a religion based on spiritualism. He died at the age of 80 in
-            480 BC but his teachings spread throughout southern and eastern Asia and are followed across the world
-            today. </p>
-        <h5>The Invasion of Alexander</h5>
-        <p>When Alexander invaded India in 326 BC, he crossed the Indus river and defeated the Indian rulers in battle.
-            Noteworthy of the Indians’ attempts at war, was the use of elephants, something that the Macedonians had
-            never seen before. Alexander then took over the lands of the defeated kings.</p>
-        <h5>The Gupta Dynasty</h5>
-        <p>The Gupta period has been referred to as the Golden Age of Indian history. When Chandragupt I received the
-            gift of Pataliputra in dowry when he married the daughter of the chief of the ‘Licchavis’, he started to lay
-            down the foundation of his empire, which extended from the river Ganges or the Ganga to the city of
-            Allahabad. He ruled for 15 years and was also referred to as the ‘king of kings’ for his strategic conquests
-            and the flourishing state of India. </p>
-        <h5>Harshavardhana</h5>
-        <p>The last of the ancient kingdoms in India was by the king Harshavardhana, who ascended the throne at
-            Thanneshwar and Kannauj after his brother died. While successful in a few of his conquests, he eventually
-            got defeated by the Chalukya Kingdom of Deccan India. Harshavardhana was well-known for establishing
-            relations with the Chinese, and also for having high religious tolerance and strong administrative
-            capabilities. </p>
-        <h5>Medieval Indian History</h5>
-        <p>The medieval history of India is renowned for deriving a lot of its character from Islamic kingdoms.
-            Extending across almost three generations, medieval India included a number of kingdoms and dynasties:
-            - The Chalukyas
-            - The Pallavas
-            - The Pandyas
-            - The Rashtrakutas
-            - The Cholas</p>
-        <p>The Cholas were the most important rulers at this time, the 9th Century AD. Their kingdom covered a large
-            part of South India, including Sri Lanka and the Maldives. While the rulers ruled bravely and carried out
-            the annexation of multiple territories in India, the empire came to an end in the 14th Century AD with an
-            invasion by a man named Kafur Malik. The monuments from the Chola Dynasty are still intact and are known for
-            their rustic charm. </p>
-        <p>The next major empire was that of the Mughals, preceded by a rise in Islamic rulers. The invasion of Timur
-            was a significant point in Indian history before a Hindu revival movement called the Bhakti movement, came
-            to be. Finally, in the 16th Century, the Mughal empire started to rise. One of the greatest empires of
-            India, the Mughal empire was a rich and glorious one, with the whole of India united and ruled by one
-            monarch. The Mughal Kings were Babar, Humayun, Sher Shah Suri (not a Mughal king), Akbar, Jehangir, Shah
-            Jahan, and Aurangzeb. They were responsible for setting up efficient public administration, laying out
-            infrastructure, and promoting the arts. A large number of monuments in India today exist from the Mughal
-            period. The death of the last Mughal King, Aurangzeb, sowed the seeds of disintegration within India.
-            Influencers of Islamic architecture in India, the Mughal kings are still looked back in awe. </p>
-        <h5>Akbar</h5>
-        <p>Emperor Akbar, also known as Akbar the Great or Jalaluddin Muhammad Akbar, was the third emperor of the
-            Mughal Empire, after Babur and Humayun. He was the son of Nasiruddin Humayun and succeeded him as the
-            emperor in the year 1556 when he was only 13 years old.</p>
-        <h5>Shah Jahan</h5>
-        <p>Shah Jahan, also known as Shahbuddin Mohammed Shah Jahan, was a Mughal Emperor who ruled in the Indian
-            Subcontinent from 1628 to 1658. He was the fifth Mughal ruler, after Babur, Humayun, Akbar, and Jahangir.
-            Shah Jahan succeeded the throne after revolting against his father, Jahangir.</p>
-        <h5>Chhatrapati Shivaji</h5>
-        <p>Chatrapati Shivaji Maharaj was the founder of the Maratha Empire in western India. He is considered to be one
-            of the greatest warriors of his time and even today, stories of his exploits are narrated as a part of the
-            folklore. King Shivaji used the guerrilla tactics to capture a part of, the then, dominant Mughal
-            empire.</p>
-        <h5>Modern Indian History</h5>
-        <p>During the late 16th and the 17th Centuries, the European trading companies in India competed with each other
-            ferociously. By the last quarter of the 18th Century, the English had outdone all others and established
-            themselves as the dominant power in India. The British administered India for a period of about two
-            centuries and brought about revolutionary changes in the social, political and economic life of the country.
+            बहुत समय पहले, पूर्वी दुनिया में, कुछ सभ्यताओं का उदय हुआ। के उदय के मुख्य कारण
+            इन शहरी सभ्यताओं की नदियों तक पहुंच थी, जो मानव के विभिन्न कार्यों की सेवा करती थीं। साथ में
+            मेसोपोटामिया सभ्यता और मिस्र की सभ्यता, सिंधु घाटी सभ्यता में फैली हुई है
+            उत्तर पश्चिमी भारत और आधुनिक पाकिस्तान। तीन सभ्यताओं में सबसे बड़ी, सिंधु घाटी
+            सभ्यता 2600 ईसा पूर्व के आसपास फली-फूली, उस समय भारत में कृषि फलने-फूलने लगी। उपजाऊ
+            सिंधु घाटी ने बड़े पैमाने पर कृषि को संभव बनाया। सबसे प्रसिद्ध शहर
+            आज की तारीख में सिंधु घाटी के मोहनजोदड़ो और हड़प्पा हैं। इन दो शहरों का पता लगाने से पता चलता है
+            उत्खननकर्ता सिंधु घाटी सभ्यता की समृद्धि की झलक दिखाते हैं, जो खंडहरों और इस तरह की चीजों में प्रमाणित हैं
+            घरेलू सामान, युद्ध के हथियार, सोने और चांदी के आभूषण - और इसी तरह। सिन्धु घाटी के लोग
+            सभ्यता सुनियोजित कस्बों और पकी हुई ईंटों से बने अच्छी तरह से डिजाइन किए गए घरों में रहती थी। के युग में
+            विकास और समृद्धि, सभ्यता, दुर्भाग्य से, लगभग 1300 ईसा पूर्व तक समाप्त हो गई, जिसका मुख्य कारण
+            प्राकृतिक आपदाएं </p>
+        <h5>वैदिक सभ्यता</h5>
+        <p>अगला युग जो भारत ने देखा, वह वैदिक सभ्यता का था, जो सरस्वती नदी के किनारे फल-फूल रही थी, जिसका नाम था
+            वेदों के बाद, जो हिंदुओं के प्रारंभिक साहित्य को दर्शाते हैं। इस काल के दो महानतम महाकाव्य थे
+            रामायण और महाभारत, अभी भी हिंदू धर्म के अनुयायियों द्वारा बहुत सम्मान में आयोजित किया जाता है</p>
+        <h5>बौद्ध युग</h5>
+        <p>इसके बाद बौद्ध युग आया, महाजनपदों के समय में, जो कि सोलह महान शक्तियाँ थीं
+            7वीं और छठी शताब्दी ई.पू. उस समय की प्रमुख शक्तियाँ कपिलवस्तु के शाक्य और थे
+            वैशाली के लिच्छवी। बुद्ध, जिनका मूल नाम सिद्धार्थ गौतम था, का जन्म लुंबिनी के निकट हुआ था
+            कपिलवस्तु और बौद्ध धर्म के संस्थापक थे - अध्यात्म पर आधारित धर्म। 80 इंच . की उम्र में उनका निधन हो गया
+            480 ईसा पूर्व लेकिन उनकी शिक्षा पूरे दक्षिणी और पूर्वी एशिया में फैली और दुनिया भर में इसका पालन किया जाता
+            है
+            आज। </p>
+        <h5>सिकंदर का आक्रमण</h5>
+        <p>जब सिकंदर ने 326 ईसा पूर्व में भारत पर आक्रमण किया, तो उसने सिंधु नदी को पार किया और भारतीय शासकों को युद्ध
+            में हराया।
+            युद्ध में भारतीयों के प्रयासों में उल्लेखनीय हाथियों का उपयोग था, कुछ ऐसा जो मैसेडोनिया के लोगों के पास था
+            पहले कभी नहीं देखा। सिकंदर ने तब पराजित राजाओं की भूमि पर अधिकार कर लिया।</p>
+        <h5>गुप्त राजवंश</h5>
+        <p>गुप्त काल को भारतीय इतिहास का स्वर्ण युग कहा जाता है। जब चंद्रगुप्त मैंने प्राप्त किया
+            पाटलिपुत्र को दहेज में उपहार जब 'लिच्छवियों' के मुखिया की पुत्री से विवाह किया तो वह लेटने लगा
+            अपने साम्राज्य की नींव के नीचे, जो गंगा या गंगा नदी से लेकर शहर तक फैला हुआ था
+            इलाहाबाद। उन्होंने 15 वर्षों तक शासन किया और उनकी सामरिक विजयों के लिए उन्हें 'राजाओं का राजा' भी कहा गया
+            और भारत का फलता-फूलता राज्य। </p>
+        <h5>हर्षवर्धन</h5>
+        <p>भारत में अंतिम प्राचीन साम्राज्य राजा हर्षवर्धन द्वारा किया गया था, जो सिंहासन पर बैठा था
+            उसके भाई की मृत्यु के बाद थन्नेश्वर और कन्नौज। अपनी कुछ विजयों में सफल होने के बावजूद, वह अंततः
+            दक्कन भारत के चालुक्य साम्राज्य से हार गया। हर्षवर्धन अपनी स्थापना के लिए प्रसिद्ध थे
+            चीन के साथ संबंध, और उच्च धार्मिक सहिष्णुता और मजबूत प्रशासनिक होने के लिए भी
+            क्षमताएं। </p>
+        <h5>मध्यकालीन भारतीय इतिहास</h5>
+        <p>भारत का मध्ययुगीन इतिहास इस्लामी साम्राज्यों से अपने चरित्र को प्राप्त करने के लिए प्रसिद्ध है।
+            लगभग तीन पीढ़ियों तक फैले मध्ययुगीन भारत में कई राज्य और राजवंश शामिल थे:
+            - चालुक्य
+            - पल्लवसी
+            - पांड्या
+            - राष्ट्रकूट
+            - चोल</p>
+        <p>चोल इस समय के सबसे महत्वपूर्ण शासक थे, 9वीं शताब्दी ई. उनके राज्य ने एक बड़े को कवर किया
+            श्रीलंका और मालदीव सहित दक्षिण भारत का हिस्सा। जबकि शासकों ने बहादुरी से शासन किया और अंजाम दिया
+            भारत में कई क्षेत्रों का विलय, 14 वीं शताब्दी ईस्वी में साम्राज्य का अंत हो गया
+            काफूर मलिक नाम के एक व्यक्ति द्वारा आक्रमण। चोल राजवंश के स्मारक अभी भी बरकरार हैं और इसके लिए जाने जाते हैं
+            उनका देहाती आकर्षण। </p>
+        <p>अगला प्रमुख साम्राज्य मुगलों का था, जिसके पहले इस्लामी शासकों का उदय हुआ था। तैमूर का आक्रमण
+            भक्ति आंदोलन नामक एक हिंदू पुनरुत्थान आंदोलन के आने से पहले भारतीय इतिहास में एक महत्वपूर्ण बिंदु था
+            होना। अंतत: 16वीं शताब्दी में मुगल साम्राज्य का उदय होना शुरू हुआ। के महानतम साम्राज्यों में से एक
+            भारत, मुगल साम्राज्य एक समृद्ध और गौरवशाली था, जिसमें संपूर्ण भारत एकजुट और एक द्वारा शासित था
+            सम्राट। मुगल राजा बाबर, हुमायूं, शेर शाह सूरी (मुगल राजा नहीं), अकबर, जहांगीर, शाह थे
+            जहान, औरंगजेब। वे कुशल लोक प्रशासन की स्थापना के लिए जिम्मेदार थे
+            बुनियादी ढांचे, और कला को बढ़ावा देना। भारत में आज बड़ी संख्या में स्मारक मुगलों के हैं
+            अवधि। अंतिम मुगल राजा औरंगजेब की मृत्यु ने भारत के भीतर विघटन के बीज बोए।
+            भारत में इस्लामी स्थापत्य कला को प्रभावित करने वाले मुगल बादशाह आज भी पीछे मुड़कर देखते हैं। </p>
+        <h5>अकबर</h5>
+        <p>सम्राट अकबर, जिसे अकबर महान या जलालुद्दीन मुहम्मद अकबर के नाम से भी जाना जाता है, किसके तीसरे सम्राट थे?
+            बाबर और हुमायूँ के बाद मुगल साम्राज्य। वह नसीरुद्दीन हुमायूँ के पुत्र थे और उनके उत्तराधिकारी बने
+            वर्ष 1556 में सम्राट जब वह केवल 13 वर्ष के थे।</p>
+        <h5>शाहजहां</h5>
+        <p>शाहजहाँ, जिसे शाहबुद्दीन मोहम्मद शाहजहाँ के नाम से भी जाना जाता है, एक मुगल सम्राट था जिसने भारत में शासन
+            किया था।
+            1628 से 1658 तक उपमहाद्वीप। वह बाबर, हुमायूं, अकबर और जहांगीर के बाद पांचवें मुगल शासक थे।
+            शाहजहाँ अपने पिता जहाँगीर के खिलाफ विद्रोह करने के बाद सिंहासन पर बैठा।</p>
+        <h5>छत्रपति शिवाजी</h5>
+        <p>छत्रपति शिवाजी महाराज पश्चिमी भारत में मराठा साम्राज्य के संस्थापक थे। उसे एक माना जाता है
+            अपने समय के महानतम योद्धाओं में से और आज भी, उनके कारनामों की कहानियों को एक भाग के रूप में सुनाया जाता है
+            लोकगीत राजा शिवाजी ने तत्कालीन प्रमुख मुगलों के एक हिस्से पर कब्जा करने के लिए छापामार रणनीति का इस्तेमाल
+            किया
+            साम्राज्य।</p>
+        <h5>आधुनिक भारतीय इतिहास</h5>
+        <p>16वीं और 17वीं शताब्दी के अंत में, भारत में यूरोपीय व्यापारिक कंपनियों ने एक-दूसरे के साथ प्रतिस्पर्धा की
+            बेरहमी से अठारहवीं शताब्दी की अंतिम तिमाही तक, अंग्रेजों ने अन्य सभी को पछाड़ दिया और स्थापित किया
+            खुद को भारत में प्रमुख शक्ति के रूप में। अंग्रेजों ने भारत पर लगभग दो वर्षों तक शासन किया
+            सदियों और देश के सामाजिक, राजनीतिक और आर्थिक जीवन में क्रांतिकारी परिवर्तन लाए।
         </p>
-        <p>However, the zenith of colonisation was achieved when the British arrived in the early 1600s as traders.
-            Capitalizing on the disintegration that existed in India after the Mughal rule, the British actively used
-            the strategy of ‘divide-and-rule’ to rule over India for over 2 centuries. While the British had come in
-            earlier, they only achieved political power in 1757 AD after the Battle of Plassey. </p>
-        <p>They took a keen interest in the resources that India had to offered and have been looked back at as
-            plunderers of India’s wealth of resources - as they took cotton, spices, silk, and tea, amongst numerous
-            other resources. While they did lay out a massive chunk of India’s infrastructure, by also bringing the
-            Indians steam engines, it is seldom looked back at as an equal relationship. The British Raj was divisive
-            and pit Indians against one another, on the basis of religion; and also mistreated the laborers. The Indians
-            were essentially slaves of the British rule and were working hard without any returns on their work. This,
-            naturally, led to multiple mutinies; and prominent freedom fighters came to the forefront. Different
-            ideologies of thought believed that there were different ways of gaining freedom; however, they all had one
-            common goal - freedom. </p>
-        <p>The British queen had asserted that the aim of the British was to help India progress - however, multiple
-            problems arose without the consultation of Indian leaders. One important instance of this was when in the
-            First World War, Britain launched an attack on Germany on behalf of India, even though India did not wish
-            for that to happen; and millions of Indian soldiers were at the forefront of the British Indian Army during
-            both the world wars - further fuelling the Indian resistance. Over a million Indian soldiers were killed in
-            both the World Wars.</p>
+        <p>हालांकि, उपनिवेशवाद की पराकाष्ठा तब हासिल हुई जब ब्रिटिश 1600 के दशक की शुरुआत में व्यापारियों के रूप में
+            पहुंचे।
+            मुगल शासन के बाद भारत में मौजूद विघटन का फायदा उठाते हुए, अंग्रेजों ने सक्रिय रूप से इस्तेमाल किया
+            2 शताब्दियों से अधिक समय तक भारत पर शासन करने के लिए 'फूट डालो और राज करो' की रणनीति। जबकि अंग्रेज अंदर आ गए
+            थे
+            इससे पहले, उन्होंने केवल 1757 ई. में प्लासी की लड़ाई के बाद राजनीतिक सत्ता हासिल की थी। </p>
+        <p>उन्होंने उन संसाधनों में गहरी दिलचस्पी ली जो भारत को देने थे और उन्हें पीछे मुड़कर देखा गया है
+            भारत के संसाधनों के धन को लूटने वाले - जैसे वे कपास, मसाले, रेशम और चाय, कई के बीच ले गए
+            अन्य संसाधन। जबकि उन्होंने भारत के बुनियादी ढांचे का एक बड़ा हिस्सा भी लाकर रखा था
+            भारतीय भाप इंजन, इसे शायद ही कभी एक समान संबंध के रूप में देखा जाता है। ब्रिटिश राज विभाजनकारी था
+            और धर्म के आधार पर भारतीयों को एक दूसरे के खिलाफ खड़ा करते हैं; साथ ही मजदूरों के साथ बदसलूकी भी की। भारतीय
+            अनिवार्य रूप से ब्रिटिश शासन के गुलाम थे और अपने काम पर बिना किसी लाभ के कड़ी मेहनत कर रहे थे। इस,
+            स्वाभाविक रूप से, कई विद्रोहों को जन्म दिया; और प्रमुख स्वतंत्रता सेनानी सबसे आगे आए। अलग अलग
+            विचार की विचारधाराओं का मानना ​​था कि स्वतंत्रता प्राप्त करने के विभिन्न तरीके थे; हालाँकि, उन सभी के पास एक
+            था
+            सामान्य लक्ष्य - स्वतंत्रता। </p>
+        <p>ब्रिटिश रानी ने जोर देकर कहा था कि अंग्रेजों का उद्देश्य भारत की प्रगति में मदद करना था - हालांकि, कई
+            भारतीय नेताओं के परामर्श के बिना समस्याएं उत्पन्न हुईं। इसका एक महत्वपूर्ण उदाहरण तब था जब
+            प्रथम विश्व युद्ध, ब्रिटेन ने भारत की ओर से जर्मनी पर हमला किया, भले ही भारत नहीं चाहता था
+            ऐसा होने के लिए; और लाखों भारतीय सैनिक इस दौरान ब्रिटिश भारतीय सेना में सबसे आगे थे
+            दोनों विश्व युद्ध - भारतीय प्रतिरोध को और तेज करते हैं। में दस लाख से अधिक भारतीय सैनिक मारे गए
+            दोनों विश्व युद्ध।</p>
 
     </div>
 {% endblock %}

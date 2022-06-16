@@ -1,0 +1,165 @@
+{% extends 'base.html' %}
+{% block css %}
+    <style>
+        aside {
+            overflow: scroll;
+            height: 500px;
+        }
+
+        .contents {
+            height: 550px;
+            overflow: scroll;
+        }
+
+        aside ul li a {
+            margin-left: 5px;
+        }
+
+        .actives {
+            background-color: #48cc8c !important;
+            width: 100%;
+        }
+
+        .actives a {
+            color: white !important;
+        }
+
+        .noactive {
+            background-color: #a0bfe8;
+            width: 100%;
+        }
+
+        .noactive a {
+            color: #020000;
+        }
+
+        .nav-width {
+            width: 25% !important;
+        }
+
+        @media (max-width: 700px) {
+            .nav-width {
+                width: 50% !important;
+            }
+
+        }
+    </style>
+{% endblock %}
+{% block content %}
+    <div class="offcanvas offcanvas-start nav-width" tabindex="-1" id="offcanvas" data-bs-keyboard="false"
+         data-bs-backdrop="false">
+        <div class="offcanvas-header">
+            <h6 class="offcanvas-title " id="offcanvas">भारतीय इतिहास</h6>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body px-0">
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
+                {% for slide in slides %}
+                    <li class="nav-item {% if slide.title == name %}actives{% else %}noactive {% endif %}"
+                        id="{{ forloop.counter }}">
+                        <a href="{% url 'ADBH:indianhistorydetail' slide.slug %}"
+                           class="nav-link text-truncate">
+                            <span class="ms-1 fsize">{{ slide.title }}</span>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-sm-12 m-auto min-vh-100 p-4">
+                <!-- toggler -->
+                <button class="btn btn-dark mb-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
+                        role="button">
+                    <i class="fa-solid fa-sliders"></i>
+                </button>
+                {{ object.post|safe }}
+                <!--Next and Previous button -->
+                <div>
+                    {% if prevslug != None %}
+                        <a class="btn btn-success" href="{% url 'ADBH:currentindiadetail' prevslug %}">Previous</a>
+                    {% else %}
+                        <a class="btn btn-success disabled" href="#">Previous</a>
+                    {% endif %}
+                    {% if nextslug != None %}
+                        <a class="btn btn-success float-end"
+                           href="{% url 'ADBH:currentindiadetail' nextslug %}">Next</a>
+                    {% else %}
+                        <a class="btn btn-success float-end disabled" href="#">Next</a>
+                    {% endif %}
+                </div>
+
+
+                <!--Comment Section !-->
+                <section style="background-color: #eee;">
+                    <div class="container-lg my-1 py-2">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-12 col-lg-10 col-xl-8">
+                                <h5>Recent Comments</h5>
+                                <div class="card">
+                                    {% for comment in comments %}
+                                        <div class="card-body">
+                                            <div class="d-flex flex-start align-items-center">
+                                                <img class="rounded-circle shadow-1-strong me-3"
+                                                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKEAAAChCAMAAACYjy+EAAAAMFBMVEXk5ueutLepr7Lo6erV2Nrb3t/h4+THy825v8Gxt7rO0tTq7O3Bxci1ur3DyMrY2936onKYAAADqElEQVR4nO2bUZOzKgxAgQAKKP7/f3tBe9va3X5C0ODO5Lzt7MuZpAQIUQiGYRiGYRiGYRiGYRiGYZjLARB20d5rYwX0lvkBiMVPTj1xkzZ30gx2GKVS8o0kOXoReps9MONO7o1obxBHsFF+E0z/GLrnGvw3u4ej011TDfZrgl+OQ09BMx8KJsWx268RdIHfiumjCLrQL7H0UKwRlLJDosGUpnjFGXJDO9cISjmSGx6XmT1qos0zDJWCSVFTKoKt9UvMltBQjAhDNRAGcanO8apIJxgcRlBKssUCuBASFkXA/ApXiI45sGAFpaMxFAPaUGkaQ3SS01GRZK0YtGCCQlB45Epeg0hxlg34JCco9hVAlusNiqJtG5JMc3zAbigb7nrD8gve71y/8QG+XmfUcnvD63eVP2AY2bDZ8P5Zvv9abjk4SJJ6ePs9pXFfHgkMoUWQ5GzzB86HTWdskvZSXWvzAwK/RGVv852R5nHl9vflhp6DJGoh4vs2kUYQfxFwZC8/2KJN0xNZwQVRUTayUX1syvcK1AGH4ljzIiDeUzzx017txkLUOnwBprLBNNP6ifqiSP82WncKI+lsNil2eaOvUFSdBHNZLFouruPkUsk4i5q6jlaBOCzd1IX6B+H7XFqe++obwA0Qi/vdUamx2xL5IJjJfQ7QKemivcv8YR4wtXodknzOcI5e3yC/O5KONYv3w+D9YqzoPnf4EwAIT+BefskMhNEpfDFOiRiHdaD4BqJZwC4+Pn6Bu2Wc/56nbfS5kyeEPOE8y73aZ73JmkNaNIHcEqwfy8+wbh4MZSTzePj8j8j9Hk0ZNdH6DiJXviq9/yXnyVye7RS+qTJ6e8vZX1rIQfixxW9zHC7bDAF0Q2/znatGl3TJ8HURSl2Q63QMPElvc5z9uWsGbH0X5NDxzAsqnJfgd0d/Wn1sfFL+rnjSBwNlnycgHc94AAq6aUbpiKm5NrY+Jx+hWntiEK8VlHnOqiXTMF0u2Ng0oRCUDR/YBCJB6ZCFkSTFD0XUM8HVq3gH5uuVxpmQShSiLraNhNQrVjfxYCIVrP9mgPRHuFH5UyTOcaYuz4E6x5maktM6jYtDxYognnonKac8iE0zP3hULC2KbZNdLYrFMewTQlk8t4b4nvEsSmtiryQnyqZkm77haSNdoUug3/BeFA1DEFyevlM2NHTp/fjIsOiE0zGEZceHThvKg5K9ucup4UnBGGqq1z1xBVsz9OVYkGEYhmEY5g/zHxF/Lvt2k+QVAAAAAElFTkSuQmCC"
+                                                     alt="avatar" width="60"
+                                                     height="60"/>
+                                                <div>
+                                                    <h6 class="fw-bold text-primary mb-1">{{ comment.name }}</h6>
+                                                    <p class="text-muted small mb-0">
+                                                        Shared publicly - {{ comment.timestamp|timesince }} Ago
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <p class="mt-3 mb-4 pb-2">
+                                                {{ comment.body }}
+                                            </p>
+                                        </div>
+                                    {% endfor %}
+                                    <div class="card-footer py-1 border-0" style="background-color: #f8f9fa;">
+                                        <form action="" method="post">
+                                            {% csrf_token %}
+                                            <h5>Comment:</h5>
+                                            {% if form.subject.errors %}
+                                                <ol>
+                                                    {% for error in form.subject.errors %}
+                                                        <li><strong>{{ error|escape }}</strong></li>
+                                                    {% endfor %}
+                                                </ol>
+                                            {% endif %}
+                                            <div class="d-flex flex-start w-100">
+                                                <img class="rounded-circle shadow-1-strong me-3"
+                                                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKEAAAChCAMAAACYjy+EAAAAMFBMVEXk5ueutLepr7Lo6erV2Nrb3t/h4+THy825v8Gxt7rO0tTq7O3Bxci1ur3DyMrY2936onKYAAADqElEQVR4nO2bUZOzKgxAgQAKKP7/f3tBe9va3X5C0ODO5Lzt7MuZpAQIUQiGYRiGYRiGYRiGYRiGYZjLARB20d5rYwX0lvkBiMVPTj1xkzZ30gx2GKVS8o0kOXoReps9MONO7o1obxBHsFF+E0z/GLrnGvw3u4ej011TDfZrgl+OQ09BMx8KJsWx268RdIHfiumjCLrQL7H0UKwRlLJDosGUpnjFGXJDO9cISjmSGx6XmT1qos0zDJWCSVFTKoKt9UvMltBQjAhDNRAGcanO8apIJxgcRlBKssUCuBASFkXA/ApXiI45sGAFpaMxFAPaUGkaQ3SS01GRZK0YtGCCQlB45Epeg0hxlg34JCco9hVAlusNiqJtG5JMc3zAbigb7nrD8gve71y/8QG+XmfUcnvD63eVP2AY2bDZ8P5Zvv9abjk4SJJ6ePs9pXFfHgkMoUWQ5GzzB86HTWdskvZSXWvzAwK/RGVv852R5nHl9vflhp6DJGoh4vs2kUYQfxFwZC8/2KJN0xNZwQVRUTayUX1syvcK1AGH4ljzIiDeUzzx017txkLUOnwBprLBNNP6ifqiSP82WncKI+lsNil2eaOvUFSdBHNZLFouruPkUsk4i5q6jlaBOCzd1IX6B+H7XFqe++obwA0Qi/vdUamx2xL5IJjJfQ7QKemivcv8YR4wtXodknzOcI5e3yC/O5KONYv3w+D9YqzoPnf4EwAIT+BefskMhNEpfDFOiRiHdaD4BqJZwC4+Pn6Bu2Wc/56nbfS5kyeEPOE8y73aZ73JmkNaNIHcEqwfy8+wbh4MZSTzePj8j8j9Hk0ZNdH6DiJXviq9/yXnyVye7RS+qTJ6e8vZX1rIQfixxW9zHC7bDAF0Q2/znatGl3TJ8HURSl2Q63QMPElvc5z9uWsGbH0X5NDxzAsqnJfgd0d/Wn1sfFL+rnjSBwNlnycgHc94AAq6aUbpiKm5NrY+Jx+hWntiEK8VlHnOqiXTMF0u2Ng0oRCUDR/YBCJB6ZCFkSTFD0XUM8HVq3gH5uuVxpmQShSiLraNhNQrVjfxYCIVrP9mgPRHuFH5UyTOcaYuz4E6x5maktM6jYtDxYognnonKac8iE0zP3hULC2KbZNdLYrFMewTQlk8t4b4nvEsSmtiryQnyqZkm77haSNdoUug3/BeFA1DEFyevlM2NHTp/fjIsOiE0zGEZceHThvKg5K9ucup4UnBGGqq1z1xBVsz9OVYkGEYhmEY5g/zHxF/Lvt2k+QVAAAAAElFTkSuQmCC"
+                                                     alt="avatar" width="40"
+                                                     height="40"/>
+                                                <div class="form-outline w-100">
+                                                    {% for field in form %}
+                                                        <div class="fieldWrapper">
+                                                            {{ field.errors }}
+                                                            {{ field.label_tag }}{{ field }}
+                                                            {% if field.help_text %}
+                                                                <p class="help">{{ field.help_text|safe }}</p>
+                                                            {% endif %}
+                                                        </div>
+                                                    {% endfor %}
+                                                    <label class="form-label" for="textAreaExample">Message</label>
+                                                </div>
+                                            </div>
+                                            <div class="float-end mt-2 pt-1">
+                                                <button type="submit" class="btn btn-primary btn-sm">Post comment
+                                                </button>
+                                                <button type="reset" class="btn btn-outline-primary btn-sm">Cancel
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -9,6 +9,7 @@ from io import BytesIO
 # Create your models here.
 class Common(models.Model):
     title = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=200, unique=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     post = HTMLField()
     viewcounter = models.IntegerField(default=0)
@@ -129,11 +130,11 @@ class IndianHistoryComments(Comments):
     post = models.ForeignKey(IndianHistoryModel, on_delete=models.CASCADE, related_name='indianhistorycomments')
 
     class Meta:
-        verbose_name_plural = 'IndianHistoryComments'
+        verbose_name_plural = 'IndianHistroyComments'
 
 
 class CurrentIndiaComments(Comments):
-    post = models.ForeignKey(CurrentIndianModel, on_delete=models.CASCADE, related_name='currentindiancommetns')
+    post = models.ForeignKey(CurrentIndianModel, on_delete=models.CASCADE, related_name='currentindiacomments')
 
     class Meta:
         verbose_name_plural = 'CurrentIndiaComments'
@@ -170,7 +171,7 @@ class SlideImage(models.Model):
     def save(self, *args, **kwargs):
         im = Image.open(self.image)
         output = BytesIO()
-        im = im.resize((1280, 848))
+        im = im.resize((1280, 500))
         im.save(output, format='JPEG', quality=100)
         output.seek(0)
         self.image = InMemoryUploadedFile(output, 'ImageFiled', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg',

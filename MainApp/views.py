@@ -5,6 +5,8 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from .forms import *
 from django.urls import reverse_lazy, reverse
+from next_prev import next_in_order, prev_in_order
+import json
 
 
 # Create your views here.
@@ -57,33 +59,90 @@ class HistoricalPlacesDetail(DetailView, FormView):
 
     def post(self, request, *args, **kwargs):
         form = HistoricalPlaceCommentForm(request.POST)
-        form.instance.post = HistoricalPlaceModel.objects.get(pk=self.kwargs.get('pk'))
+        form.instance.post = HistoricalPlaceModel.objects.get(slug=self.kwargs.get('slug'))
         form.save()
-        return HttpResponseRedirect(reverse_lazy('ADBH:historicalplacesdetail', kwargs={'pk': self.kwargs.get('pk')}))
+        return HttpResponseRedirect(
+            reverse_lazy('ADBH:historicalplacesdetail', kwargs={'slug': self.kwargs.get('slug')}))
 
 
-class IndianHistory(ListView):
-    template_name = 'ADBH/indianhistory.html'
+class IndianHistory(View):
+    def get(self, request):
+        history = IndianHistoryModel.objects.first()
+        return HttpResponseRedirect(reverse_lazy('ADBH:indianhistorydetail', kwargs={'slug': history.slug}))
+
+
+class IndianHistoryDetail(DetailView, FormView):
+    template_name = 'ADBH/detail/indianhistory.html'
     model = IndianHistoryModel
-    paginate_by = 1
+    form_class = IndianHistoryCommentForm
 
     def get_context_data(self, **kwargs):
-        context = super(IndianHistory, self).get_context_data(**kwargs)
+        context = super(IndianHistoryDetail, self).get_context_data(**kwargs)
+        obj = self.model.objects.get(slug=kwargs.get('object').slug)
+        obj.viewcounter += 1
+        context['viewcounter'] = obj.viewcounter
+        obj.save()
+        context['comments'] = IndianHistoryComments.objects.filter(post=kwargs['object'])
         context['slides'] = IndianHistoryModel.objects.all()
         context['indianhistoryactive'] = True
+        context['name'] = obj.title
+        # Pagination
+        currentpost = obj
+        prev = prev_in_order(currentpost)
+        next = next_in_order(currentpost)
+        context['prevslug'] = None
+        context['nextslug'] = None
+        if prev != None:
+            context['prevslug'] = prev.slug
+        if next != None:
+            context['nextslug'] = next.slug
         return context
 
+    def post(self, request, *args, **kwargs):
+        form = IndianHistoryCommentForm(request.POST)
+        form.instance.post = IndianHistoryModel.objects.get(slug=self.kwargs.get('slug'))
+        form.save()
+        return HttpResponseRedirect(reverse_lazy('ADBH:indianhistorydetail', kwargs={'slug': self.kwargs.get('slug')}))
 
-class CurrentIndia(ListView):
-    template_name = 'ADBH/currentindia.html'
+
+class CurrentIndia(View):
+    def get(self, request):
+        current = CurrentIndianModel.objects.first()
+        return HttpResponseRedirect(reverse_lazy('ADBH:currentindiadetail', kwargs={'slug': current.slug}))
+
+
+class CurrentIndiaDetail(DetailView, FormView):
+    template_name = 'ADBH/detail/currentindia.html'
     model = CurrentIndianModel
-    paginate_by = 1
+    form_class = CurretIndiaCommentForm
 
     def get_context_data(self, **kwargs):
-        context = super(CurrentIndia, self).get_context_data(**kwargs)
+        context = super(CurrentIndiaDetail, self).get_context_data(**kwargs)
+        obj = self.model.objects.get(slug=kwargs.get('object').slug)
+        obj.viewcounter += 1
+        context['viewcounter'] = obj.viewcounter
+        obj.save()
+        context['comments'] = CurrentIndiaComments.objects.filter(post=kwargs['object'])
         context['slides'] = CurrentIndianModel.objects.all()
         context['currentindianactive'] = True
+        context['name'] = obj.title
+        # Pagination
+        currentpost = obj
+        prev = prev_in_order(currentpost)
+        next = next_in_order(currentpost)
+        context['prevslug'] = None
+        context['nextslug'] = None
+        if prev != None:
+            context['prevslug'] = prev.slug
+        if next != None:
+            context['nextslug'] = next.slug
         return context
+
+    def post(self, request, *args, **kwargs):
+        form = CurretIndiaCommentForm(request.POST)
+        form.instance.post = CurrentIndianModel.objects.get(slug=self.kwargs.get('slug'))
+        form.save()
+        return HttpResponseRedirect(reverse_lazy('ADBH:currentindiadetail', kwargs={'slug': self.kwargs.get('slug')}))
 
 
 class FreedomFighter(ListView):
@@ -114,9 +173,9 @@ class FreedomFighterDetail(DetailView, FormView):
 
     def post(self, request, *args, **kwargs):
         form = FreedomFighterCommentForm(request.POST)
-        form.instance.post = FreedomFighterModel.objects.get(pk=self.kwargs.get('pk'))
+        form.instance.post = FreedomFighterModel.objects.get(slug=self.kwargs.get('slug'))
         form.save()
-        return HttpResponseRedirect(reverse_lazy('ADBH:freedomfighterdetail', kwargs={'pk': self.kwargs.get('pk')}))
+        return HttpResponseRedirect(reverse_lazy('ADBH:freedomfighterdetail', kwargs={'slug': self.kwargs.get('slug')}))
 
 
 class FactBlog(ListView):
@@ -136,7 +195,7 @@ class FactBlogDetail(DetailView, FormView):
 
     def get_context_data(self, **kwargs):
         context = super(FactBlogDetail, self).get_context_data(**kwargs)
-        obj = self.model.objects.get(pk=kwargs.get('object').pk)
+        obj = self.model.objects.get(slug=kwargs.get('object').slug)
         obj.viewcounter += 1
         context['viewcounter'] = obj.viewcounter
         obj.save()
@@ -146,9 +205,9 @@ class FactBlogDetail(DetailView, FormView):
 
     def post(self, request, *args, **kwargs):
         form = FactBlogCommentForm(request.POST)
-        form.instance.post = FactBlogModel.objects.get(pk=self.kwargs.get('pk'))
+        form.instance.post = FactBlogModel.objects.get(slug=self.kwargs.get('slug'))
         form.save()
-        return HttpResponseRedirect(reverse_lazy('ADBH:factblogdetail', kwargs={'pk': self.kwargs.get('pk')}))
+        return HttpResponseRedirect(reverse_lazy('ADBH:factblogdetail', kwargs={'slug': self.kwargs.get('slug')}))
 
 
 class CustomAndTraditions(ListView):
@@ -178,9 +237,10 @@ class CustomAndTraditionsDetail(DetailView, FormView):
 
     def post(self, request, *args, **kwargs):
         form = CustomAndTraditionCommentForm(request.POST)
-        form.instance.post = CustomAndTraditionModel.objects.get(pk=self.kwargs.get('pk'))
+        form.instance.post = CustomAndTraditionModel.objects.get(slug=self.kwargs.get('slug'))
         form.save()
-        return HttpResponseRedirect(reverse_lazy('ADBH:customandtraditiondetail', kwargs={'pk': self.kwargs.get('pk')}))
+        return HttpResponseRedirect(
+            reverse_lazy('ADBH:customandtraditiondetail', kwargs={'slug': self.kwargs.get('slug')}))
 
 
 class Searched(View):
@@ -199,3 +259,46 @@ class Searched(View):
             'custom': custom
         }
         return render(request, 'ADBH/searched.html', context)
+
+
+class Comments(View):
+    def get(self, request):
+        historical = HistoricalPlaceComments.objects.all().reverse()[:30]
+        indianhistory = IndianHistoryComments.objects.all().reverse()[:30]
+        currentindia = CurrentIndiaComments.objects.all().reverse()[:30]
+        freedomfighter = FreedomFighterComments.objects.all().reverse()[:30]
+        factblog = FactBlogComments.objects.all().reverse()[:30]
+        custom = CustomAndTraditionComments.objects.all().reverse()[:30]
+        context = {
+            'comment': True,
+            'historical': historical,
+            'indianhistory': indianhistory,
+            'currentindia': currentindia,
+            'freedomfighter': freedomfighter,
+            'factblog': factblog,
+            'custom': custom
+        }
+        return render(request, 'ADBH/comments.html', context)
+
+    def post(self, request):
+        if request.method == 'POST':
+            obj = request.POST.get('object')
+            pk = request.POST.get('pk')
+            if obj == 'historical':
+                HistoricalPlaceComments.objects.get(pk=pk).delete()
+            elif obj == 'indianhistory':
+                IndianHistoryComments.objects.get(pk=pk).delete()
+            elif obj == 'currentindia':
+                CurrentIndiaComments.objects.get(pk=pk).delete()
+            elif obj == 'freedomfighter':
+                FreedomFighterComments.objects.get(pk=pk).delete()
+            elif obj == 'factblog':
+                FactBlogComments.objects.get(pk=pk).delete()
+            elif obj == 'custom':
+                CustomAndTraditionComments.objects.get(pk=pk).delete()
+        return HttpResponseRedirect(reverse_lazy('ADBH:comments'))
+
+
+class SiteMap(View):
+    def get(self, request):
+        return render(request, 'sitemap.xml', content_type='text/xml')

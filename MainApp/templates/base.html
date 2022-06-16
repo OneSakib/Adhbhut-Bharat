@@ -2,13 +2,53 @@
 <html lang="en">
 <head>
     {% load static %}
+    <!--Google head tag-->
+    <meta name="google-site-verification" content="-HNYVIPst5QQ3jMs4AQilJ57aBwlkqstnVMJwT2-qRs"/>
+
     <meta charset="UTF-8">
+    <!-- Meta tags -->
+    <meta name="title" content="Adbhut Bharat">
+    <meta name="description"
+          content="Adhbhut Bharat is a website for indian history , current india,facts, freedom fighter etc.">
+    <meta name="keywords"
+          content="Adbhut Bharat,Indian History, Modern History,Middle History, Mid History, Ancient History, History, Current Affair, current, India,Historical places, Taj Mahal,Naya bharat, Hindustan, purana bharat, purana itihas, naya itihas, middle itihas">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="Hindi">
+    <meta name="revisit-after" content=" days">
+    <meta name="author" content="Sakib Malik">
+
+    <!--Og Social Media tags-->
+    <meta property="og:title" content="Abhbhut Bharat"/>
+    <meta property="og:url" content="https://adhbhutbharat.me/"/>
+    <meta property="og:description"
+          content="Adhbhut Bharat is a website for indian history , current india,facts, freedom fighter etc."/>
+    <meta property="og:image"
+          content="https://adhbhutbharat.me/static/logo.png"/>
+    <meta property="og:type" content="website"/>
+
+    <!--Twitter tags-->
+    <meta name="twitter:title" content="Abhbhut Bharat">
+    <meta name="twitter:description"
+          content="Adhbhut Bharat is a website for indian history , current india,facts, freedom fighter etc">
+    <meta name="twitter:description" content='https://adhbhutbharat.me/'>
+    <meta name="twitter:site" content="https://adhbhutbharat.me/">
+    <meta name="twitter:creator" content="@sakibmalik">
+    <!--title-->
     <title>{% block title %}Welcome to Adhbhut Bharat {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- Bootstrap CSS -->
     <link href="{% static 'Bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" crossorigin="anonymous">
-    <link href="{% static 'Bootstrap/css/style.css' %}" rel="stylesheet">
-    <link href="{% static 'style.css' %}" rel="stylesheet">
+
+    <!--font awesome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
+            integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="icon" href="{% static 'logo.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'logo.png' %}">
+    <meta name="theme-color" content="#317EFB"/>
     <style>
         .navbar-nav {
             margin-left: auto;
@@ -30,6 +70,23 @@
             background-color: #0f5132;
         }
 
+        @media (max-width: 500px) {
+            small .text-muted {
+                margin-right: -50px !important;
+            }
+
+            .btn-group a {
+                margin-left: -13px;
+            }
+
+            .align-items-center {
+                font-size: 10px;
+            }
+
+            .align-items-center a {
+                font-size: 10px;
+            }
+        }
     </style>
     {% block css %}
     {% endblock %}
@@ -37,9 +94,9 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'ADBH:index' %}"><img src="{% static 'logo.png' %}" style="width: 50px">
-            &nbsp; Adhbhut
-            Bharat</a>
+        <a class="navbar-brand" href="{% url 'ADBH:index' %}"><img src="{% static 'logo.png' %}"
+                                                                   style="width: 100%; border-radius: 10px"
+                                                                   alt="not found"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -48,33 +105,34 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item ">
                     <a class="nav-link {% if  Historyactive %} active {% endif %}" aria-current="page"
-                       href="{% url 'ADBH:historicalplaces' %}">Historical
-                        Places</a>
+                       href="{% url 'ADBH:historicalplaces' %}">ऐतिहासिक स्थान</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if  indianhistoryactive %}active {% endif %}" aria-current="page"
-                       href="{% url 'ADBH:indianhistory' %}">Indian
-                        History</a>
+                       href="{% url 'ADBH:indianhistory' %}">भारतीय इतिहास </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if  currentindianactive %}active {% endif %}" aria-current="page"
-                       href="{% url 'ADBH:currentindia' %}">Current
-                        India</a>
+                       href="{% url 'ADBH:currentindia' %}">वर्तमान भारत</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if  freedomactive %}active {% endif %}" aria-current="page"
-                       href="{% url 'ADBH:freedomfighter' %}">Freedom
-                        Fighter</a>
+                       href="{% url 'ADBH:freedomfighter' %}">स्वतंत्रता सेनानी</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if  factactive %}active {% endif %}" aria-current="page"
-                       href="{% url 'ADBH:factblog' %}">Facts Blog</a>
+                       href="{% url 'ADBH:factblog' %}">तथ्य ब्लॉग</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if  customactive %}active {% endif %}" aria-current="page"
-                       href="{% url 'ADBH:customandtradition' %}">India
-                        Customs and Traditions</a>
+                       href="{% url 'ADBH:customandtradition' %}">भारत के रीति-रिवाज और परंपराएं</a>
                 </li>
+                {% if user.is_superuser %}
+                    <li class="nav-item">
+                        <a class="nav-link {% if  comment %}active {% endif %}" aria-current="page"
+                           href="{% url 'ADBH:comments' %}">Admin</a>
+                    </li>
+                {% endif %}
             </ul>
             <form class="d-flex" role="search" action="{% url 'ADBH:searched' %}" method="get">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
@@ -90,30 +148,23 @@
 <!--  Footer  !-->
 <div class="container-lg">
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <div class="col-md-4 d-flex align-items-center">
+        <div class="col-md-6 d-flex align-items-center">
             <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-                <svg class="bi" width="30" height="24">
-
-                </svg>
+                <img src="{% static 'logo.png' %}" class="image w-100" alt="not found">
             </a>
-            <span class="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span>
+            <span class="mb-3 mb-md-0 text-muted">© 2022 AdbhutBharat, Inc</span>
+            <span class="mb-3 mb-md-0 text-muted">This site is developed by Sakib Malik</span>
         </div>
 
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-            <li class="ms-3"><a class="text-muted" href="#">
-                <svg class="bi" width="24" height="24">
-
-                </svg>
+            <li class="ms-3"><a href="#">
+                <i class="fa-brands fa-twitter"></i>Twitter
             </a></li>
-            <li class="ms-3"><a class="text-muted" href="#">
-                <svg class="bi" width="24" height="24">
-
-                </svg>
+            <li class="ms-3"><a href="#">
+                <i class="fa-brands fa-facebook"></i>Facebook
             </a></li>
-            <li class="ms-3"><a class="text-muted" href="#">
-                <svg class="bi" width="24" height="24">
-
-                </svg>
+            <li class="ms-3"><a href="#">
+                <i class="fa-brands fa-instagram"></i>Instagram
             </a></li>
         </ul>
     </footer>
