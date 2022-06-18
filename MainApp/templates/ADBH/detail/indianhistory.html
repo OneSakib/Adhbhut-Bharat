@@ -33,13 +33,23 @@
             color: #020000;
         }
 
+        .hs-text {
+            font-size: 20px;
+        }
+
+        #hs-li-1, #hs-li-2, #hs-li-3 {
+            margin-left: -31px;
+            text-decoration: none;
+            list-style: none;
+        }
+
         .nav-width {
             width: 25% !important;
         }
 
         @media (max-width: 700px) {
             .nav-width {
-                width: 50% !important;
+                width: 75% !important;
             }
 
         }
@@ -53,16 +63,55 @@
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body px-0">
-            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start" id="menu">
-                {% for slide in slides %}
-                    <li class="nav-item {% if slide.title == name %}actives{% else %}noactive {% endif %}"
-                        id="{{ forloop.counter }}">
-                        <a href="{% url 'ADBH:indianhistorydetail' slide.slug %}"
-                           class="nav-link text-truncate">
-                            <span class="ms-1 fsize">{{ slide.title }}</span>
-                        </a>
-                    </li>
-                {% endfor %}
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start text-center" id="menu">
+                <li class="nav-item noactive hs-ul-1"><span class="hs-text">प्राचीन भारत</span> &nbsp; <i
+                        class="fa fa-caret-down"></i>
+                    <ul id="hs-li-1">
+                        {% for slide in slides %}
+                            {% if slide.type == 'ANCIENT' %}
+                                <li class="nav-item {% if slide.title == name %}actives{% else %}noactive {% endif %}"
+                                    id="{{ forloop.counter }}">
+                                    <a href="{% url 'ADBH:indianhistorydetail' slide.slug %}"
+                                       class="nav-link text-truncate">
+                                        <span class="ms-1 fsize">{{ slide.title }}</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li class="nav-item noactive hs-ul-2"><span class="hs-text">मध्यकालीन भारत</span> &nbsp; <i
+                        class="fa fa-caret-down"></i>
+                    <ul id="hs-li-2">
+                        {% for slide in slides %}
+                            {% if slide.type == 'MIDDLE' %}
+                                <li class="list-group-item {% if slide.title == name %}actives{% else %}noactive {% endif %}"
+                                    id="{{ forloop.counter }}">
+                                    <a href="{% url 'ADBH:indianhistorydetail' slide.slug %}"
+                                       class="nav-link text-truncate">
+                                        <span class="ms-1 fsize">{{ slide.title }}</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li class="nav-item noactive hs-ul-3"><span class="hs-text">आधुनिक भारत </span>&nbsp; <i
+                        class="fa fa-caret-down"></i>
+                    <ul id="hs-li-3">
+                        {% for slide in slides %}
+                            {% if slide.type == 'MODERN' %}
+                                <li class="nav-item {% if slide.title == name %}actives{% else %}noactive {% endif %}"
+                                    id="{{ forloop.counter }}">
+                                    <a href="{% url 'ADBH:indianhistorydetail' slide.slug %}"
+                                       class="nav-link text-truncate">
+                                        <span class="ms-1 fsize">{{ slide.title }}</span>
+                                    </a>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
@@ -162,4 +211,22 @@
             </div>
         </div>
     </div>
+{% endblock %}
+{% block js %}
+    <script>
+        $('#hs-li-1').hide();
+        $('#hs-li-2').hide();
+        $('#hs-li-3').hide();
+        $('.hs-ul-1').click(function () {
+            $('#hs-li-1').toggle(500);
+        })
+        $('.hs-ul-2').click(function () {
+            $('#hs-li-2').toggle(500);
+        })
+        $('.hs-ul-3').click(function () {
+            $('#hs-li-3').toggle(500);
+        })
+    </script>
+
+
 {% endblock %}

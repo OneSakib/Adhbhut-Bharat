@@ -5,8 +5,15 @@ import sys
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from io import BytesIO
 
-
 # Create your models here.
+
+HISTORY_TYPE = (
+    ('ANCIENT', 'ANCIENT'),
+    ('MIDDLE', 'MIDDLE'),
+    ('MODERN', 'MODERN'),
+)
+
+
 class Common(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(max_length=200, unique=True)
@@ -40,6 +47,8 @@ class HistoricalPlaceModel(Common):
 
 
 class IndianHistoryModel(Common):
+    type = models.CharField(choices=HISTORY_TYPE, max_length=100, default='ANCIENT')
+
     class Meta:
         verbose_name_plural = 'IndianHistoryModel'
         ordering = ['timestamp']
