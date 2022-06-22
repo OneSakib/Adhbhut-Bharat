@@ -8,9 +8,11 @@ from io import BytesIO
 # Create your models here.
 
 HISTORY_TYPE = (
+    ('WORLD_HISTORY', 'WORLD_HISTORY'),
     ('ANCIENT', 'ANCIENT'),
     ('MIDDLE', 'MIDDLE'),
     ('MODERN', 'MODERN'),
+    ('INDIA_AFTER_FREEDOM', 'INDIA_AFTER_FREEDOM')
 )
 
 
@@ -33,7 +35,7 @@ class HistoricalPlaceModel(Common):
 
     class Meta:
         verbose_name_plural = 'HistoricalPlaceModel'
-        ordering = ['timestamp']
+        ordering = ['-timestamp']
 
     def save(self, *args, **kwargs):
         im = Image.open(self.image)
@@ -42,6 +44,7 @@ class HistoricalPlaceModel(Common):
         im.save(output, format='JPEG', quality=100)
         output.seek(0)
         self.image = InMemoryUploadedFile(output, 'ImageFiled', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg',
+                                      
                                           sys.getsizeof(output), None)
         return super(HistoricalPlaceModel, self).save(*args, **kwargs)
 
@@ -51,13 +54,13 @@ class IndianHistoryModel(Common):
 
     class Meta:
         verbose_name_plural = 'IndianHistoryModel'
-        ordering = ['timestamp']
+        ordering = ['-timestamp']
 
 
 class CurrentIndianModel(Common):
     class Meta:
         verbose_name_plural = 'CurrentIndianModel'
-        ordering = ['timestamp']
+        ordering = ['-timestamp']
 
 
 class FreedomFighterModel(Common):
@@ -65,7 +68,7 @@ class FreedomFighterModel(Common):
 
     class Meta:
         verbose_name_plural = 'FreedomFighterModel'
-        ordering = ['timestamp']
+        ordering = ['-timestamp']
 
     def save(self, *args, **kwargs):
         im = Image.open(self.image)
@@ -83,7 +86,7 @@ class FactBlogModel(Common):
 
     class Meta:
         verbose_name_plural = 'FactBlogModel'
-        ordering = ['timestamp']
+        ordering = ['-timestamp']
 
     def save(self, *args, **kwargs):
         im = Image.open(self.image)
@@ -101,7 +104,7 @@ class CustomAndTraditionModel(Common):
 
     class Meta:
         verbose_name_plural = 'CustomandTraditionModel'
-        ordering = ['timestamp']
+        ordering = ['-timestamp']
 
     def save(self, *args, **kwargs):
         im = Image.open(self.image)
@@ -122,7 +125,7 @@ class Comments(models.Model):
     active = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ['timestamp']
+        ordering = ['-timestamp']
 
     def __str__(self):
         return f'Commented by {self.name}'

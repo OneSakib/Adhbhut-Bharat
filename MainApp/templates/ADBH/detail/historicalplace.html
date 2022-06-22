@@ -10,74 +10,81 @@
                     {{ object.post|safe }}
                 </div>
             </div>
-            <!--Comment Section !-->
-            <section style="background-color: #eee;">
-                <div class="container-lg my-1 py-2">
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-md-12 col-lg-10 col-xl-8">
-                            <h5>Recent Comments</h5>
-                            <div class="card">
-                                {% for comment in comments %}
-                                    <div class="card-body">
-                                        <div class="d-flex flex-start align-items-center">
-                                            <img class="rounded-circle shadow-1-strong me-3"
-                                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKEAAAChCAMAAACYjy+EAAAAMFBMVEXk5ueutLepr7Lo6erV2Nrb3t/h4+THy825v8Gxt7rO0tTq7O3Bxci1ur3DyMrY2936onKYAAADqElEQVR4nO2bUZOzKgxAgQAKKP7/f3tBe9va3X5C0ODO5Lzt7MuZpAQIUQiGYRiGYRiGYRiGYRiGYZjLARB20d5rYwX0lvkBiMVPTj1xkzZ30gx2GKVS8o0kOXoReps9MONO7o1obxBHsFF+E0z/GLrnGvw3u4ej011TDfZrgl+OQ09BMx8KJsWx268RdIHfiumjCLrQL7H0UKwRlLJDosGUpnjFGXJDO9cISjmSGx6XmT1qos0zDJWCSVFTKoKt9UvMltBQjAhDNRAGcanO8apIJxgcRlBKssUCuBASFkXA/ApXiI45sGAFpaMxFAPaUGkaQ3SS01GRZK0YtGCCQlB45Epeg0hxlg34JCco9hVAlusNiqJtG5JMc3zAbigb7nrD8gve71y/8QG+XmfUcnvD63eVP2AY2bDZ8P5Zvv9abjk4SJJ6ePs9pXFfHgkMoUWQ5GzzB86HTWdskvZSXWvzAwK/RGVv852R5nHl9vflhp6DJGoh4vs2kUYQfxFwZC8/2KJN0xNZwQVRUTayUX1syvcK1AGH4ljzIiDeUzzx017txkLUOnwBprLBNNP6ifqiSP82WncKI+lsNil2eaOvUFSdBHNZLFouruPkUsk4i5q6jlaBOCzd1IX6B+H7XFqe++obwA0Qi/vdUamx2xL5IJjJfQ7QKemivcv8YR4wtXodknzOcI5e3yC/O5KONYv3w+D9YqzoPnf4EwAIT+BefskMhNEpfDFOiRiHdaD4BqJZwC4+Pn6Bu2Wc/56nbfS5kyeEPOE8y73aZ73JmkNaNIHcEqwfy8+wbh4MZSTzePj8j8j9Hk0ZNdH6DiJXviq9/yXnyVye7RS+qTJ6e8vZX1rIQfixxW9zHC7bDAF0Q2/znatGl3TJ8HURSl2Q63QMPElvc5z9uWsGbH0X5NDxzAsqnJfgd0d/Wn1sfFL+rnjSBwNlnycgHc94AAq6aUbpiKm5NrY+Jx+hWntiEK8VlHnOqiXTMF0u2Ng0oRCUDR/YBCJB6ZCFkSTFD0XUM8HVq3gH5uuVxpmQShSiLraNhNQrVjfxYCIVrP9mgPRHuFH5UyTOcaYuz4E6x5maktM6jYtDxYognnonKac8iE0zP3hULC2KbZNdLYrFMewTQlk8t4b4nvEsSmtiryQnyqZkm77haSNdoUug3/BeFA1DEFyevlM2NHTp/fjIsOiE0zGEZceHThvKg5K9ucup4UnBGGqq1z1xBVsz9OVYkGEYhmEY5g/zHxF/Lvt2k+QVAAAAAElFTkSuQmCC"
-                                                 alt="avatar" width="60"
-                                                 height="60"/>
-                                            <div>
-                                                <h6 class="fw-bold text-primary mb-1">{{ comment.name }}</h6>
-                                                <p class="text-muted small mb-0">
-                                                    Shared publicly - {{ comment.timestamp|timesince }} Ago
-                                                </p>
+             <!--Comment Section !-->
+                <section style="background-color: #eee;">
+                    <div class="container-lg my-1 py-2">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-12 col-lg-12 col-xl-12">
+                                <h5>Recent Comments</h5>
+                                <div class="card">
+                                    {% for comment in comments %}
+                                        <div class="card-body">
+                                            <div class="d-flex flex-start align-items-center row">
+                                                <div class="col-lg-1 col-sm-1">
+                                                    <img class="rounded-circle shadow-1-strong me-3"
+                                                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKEAAAChCAMAAACYjy+EAAAAMFBMVEXk5ueutLepr7Lo6erV2Nrb3t/h4+THy825v8Gxt7rO0tTq7O3Bxci1ur3DyMrY2936onKYAAADqElEQVR4nO2bUZOzKgxAgQAKKP7/f3tBe9va3X5C0ODO5Lzt7MuZpAQIUQiGYRiGYRiGYRiGYRiGYZjLARB20d5rYwX0lvkBiMVPTj1xkzZ30gx2GKVS8o0kOXoReps9MONO7o1obxBHsFF+E0z/GLrnGvw3u4ej011TDfZrgl+OQ09BMx8KJsWx268RdIHfiumjCLrQL7H0UKwRlLJDosGUpnjFGXJDO9cISjmSGx6XmT1qos0zDJWCSVFTKoKt9UvMltBQjAhDNRAGcanO8apIJxgcRlBKssUCuBASFkXA/ApXiI45sGAFpaMxFAPaUGkaQ3SS01GRZK0YtGCCQlB45Epeg0hxlg34JCco9hVAlusNiqJtG5JMc3zAbigb7nrD8gve71y/8QG+XmfUcnvD63eVP2AY2bDZ8P5Zvv9abjk4SJJ6ePs9pXFfHgkMoUWQ5GzzB86HTWdskvZSXWvzAwK/RGVv852R5nHl9vflhp6DJGoh4vs2kUYQfxFwZC8/2KJN0xNZwQVRUTayUX1syvcK1AGH4ljzIiDeUzzx017txkLUOnwBprLBNNP6ifqiSP82WncKI+lsNil2eaOvUFSdBHNZLFouruPkUsk4i5q6jlaBOCzd1IX6B+H7XFqe++obwA0Qi/vdUamx2xL5IJjJfQ7QKemivcv8YR4wtXodknzOcI5e3yC/O5KONYv3w+D9YqzoPnf4EwAIT+BefskMhNEpfDFOiRiHdaD4BqJZwC4+Pn6Bu2Wc/56nbfS5kyeEPOE8y73aZ73JmkNaNIHcEqwfy8+wbh4MZSTzePj8j8j9Hk0ZNdH6DiJXviq9/yXnyVye7RS+qTJ6e8vZX1rIQfixxW9zHC7bDAF0Q2/znatGl3TJ8HURSl2Q63QMPElvc5z9uWsGbH0X5NDxzAsqnJfgd0d/Wn1sfFL+rnjSBwNlnycgHc94AAq6aUbpiKm5NrY+Jx+hWntiEK8VlHnOqiXTMF0u2Ng0oRCUDR/YBCJB6ZCFkSTFD0XUM8HVq3gH5uuVxpmQShSiLraNhNQrVjfxYCIVrP9mgPRHuFH5UyTOcaYuz4E6x5maktM6jYtDxYognnonKac8iE0zP3hULC2KbZNdLYrFMewTQlk8t4b4nvEsSmtiryQnyqZkm77haSNdoUug3/BeFA1DEFyevlM2NHTp/fjIsOiE0zGEZceHThvKg5K9ucup4UnBGGqq1z1xBVsz9OVYkGEYhmEY5g/zHxF/Lvt2k+QVAAAAAElFTkSuQmCC"
+                                                         alt="avatar" width="60" height="60"/>
+                                                </div>
+                                                <div class="col-lg-9  col-sm-5">
+                                                    <h6 class="fw-bold text-primary mb-1">{{ comment.name }} Says</h6>
+                                                </div>
+                                                <div class="col-lg-2  col-sm-2 float-end text-center">
+                                                    <p class="text-muted small mb-0 ">
+                                                        {{ comment.timestamp|timesince }} Ago
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-1 col-sm-1"></div>
+                                                <div class="col-lg-8 col-sm-8">
+                                                    <p class="mb-0">
+                                                        {{ comment.body }}
+                                                    </p>
+                                                </div>
+                                                <div class="col-lg-3 col-sm-3"></div>
                                             </div>
                                         </div>
-                                        <p class="mt-3 mb-4 pb-2">
-                                            {{ comment.body }}
-                                        </p>
+                                    {% endfor %}
+                                    <div class="card-footer py-1 border-0" style="background-color: #f8f9fa;">
+                                        <form action="" method="post">
+                                            {% csrf_token %}
+                                            <h5>Comment:</h5>
+                                            {% if form.subject.errors %}
+                                                <ol>
+                                                    {% for error in form.subject.errors %}
+                                                        <li><strong>{{ error|escape }}</strong></li>
+                                                    {% endfor %}
+                                                </ol>
+                                            {% endif %}
+                                            <div class="d-flex flex-start w-100">
+                                                <img class="rounded-circle shadow-1-strong me-3"
+                                                     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKEAAAChCAMAAACYjy+EAAAAMFBMVEXk5ueutLepr7Lo6erV2Nrb3t/h4+THy825v8Gxt7rO0tTq7O3Bxci1ur3DyMrY2936onKYAAADqElEQVR4nO2bUZOzKgxAgQAKKP7/f3tBe9va3X5C0ODO5Lzt7MuZpAQIUQiGYRiGYRiGYRiGYRiGYZjLARB20d5rYwX0lvkBiMVPTj1xkzZ30gx2GKVS8o0kOXoReps9MONO7o1obxBHsFF+E0z/GLrnGvw3u4ej011TDfZrgl+OQ09BMx8KJsWx268RdIHfiumjCLrQL7H0UKwRlLJDosGUpnjFGXJDO9cISjmSGx6XmT1qos0zDJWCSVFTKoKt9UvMltBQjAhDNRAGcanO8apIJxgcRlBKssUCuBASFkXA/ApXiI45sGAFpaMxFAPaUGkaQ3SS01GRZK0YtGCCQlB45Epeg0hxlg34JCco9hVAlusNiqJtG5JMc3zAbigb7nrD8gve71y/8QG+XmfUcnvD63eVP2AY2bDZ8P5Zvv9abjk4SJJ6ePs9pXFfHgkMoUWQ5GzzB86HTWdskvZSXWvzAwK/RGVv852R5nHl9vflhp6DJGoh4vs2kUYQfxFwZC8/2KJN0xNZwQVRUTayUX1syvcK1AGH4ljzIiDeUzzx017txkLUOnwBprLBNNP6ifqiSP82WncKI+lsNil2eaOvUFSdBHNZLFouruPkUsk4i5q6jlaBOCzd1IX6B+H7XFqe++obwA0Qi/vdUamx2xL5IJjJfQ7QKemivcv8YR4wtXodknzOcI5e3yC/O5KONYv3w+D9YqzoPnf4EwAIT+BefskMhNEpfDFOiRiHdaD4BqJZwC4+Pn6Bu2Wc/56nbfS5kyeEPOE8y73aZ73JmkNaNIHcEqwfy8+wbh4MZSTzePj8j8j9Hk0ZNdH6DiJXviq9/yXnyVye7RS+qTJ6e8vZX1rIQfixxW9zHC7bDAF0Q2/znatGl3TJ8HURSl2Q63QMPElvc5z9uWsGbH0X5NDxzAsqnJfgd0d/Wn1sfFL+rnjSBwNlnycgHc94AAq6aUbpiKm5NrY+Jx+hWntiEK8VlHnOqiXTMF0u2Ng0oRCUDR/YBCJB6ZCFkSTFD0XUM8HVq3gH5uuVxpmQShSiLraNhNQrVjfxYCIVrP9mgPRHuFH5UyTOcaYuz4E6x5maktM6jYtDxYognnonKac8iE0zP3hULC2KbZNdLYrFMewTQlk8t4b4nvEsSmtiryQnyqZkm77haSNdoUug3/BeFA1DEFyevlM2NHTp/fjIsOiE0zGEZceHThvKg5K9ucup4UnBGGqq1z1xBVsz9OVYkGEYhmEY5g/zHxF/Lvt2k+QVAAAAAElFTkSuQmCC"
+                                                     alt="avatar" width="40"
+                                                     height="40"/>
+                                                <div class="form-outline w-100">
+                                                    {% for field in form %}
+                                                        <div class="fieldWrapper">
+                                                            {{ field.errors }}
+                                                            {{ field.label_tag }}{{ field }}
+                                                            {% if field.help_text %}
+                                                                <p class="help">{{ field.help_text|safe }}</p>
+                                                            {% endif %}
+                                                        </div>
+                                                    {% endfor %}
+                                                    <label class="form-label" for="textAreaExample">Message</label>
+                                                </div>
+                                            </div>
+                                            <div class="float-end mt-2 pt-1">
+                                                <button type="submit" class="btn btn-primary btn-sm">Post comment
+                                                </button>
+                                                <button type="reset" class="btn btn-outline-primary btn-sm">Cancel
+                                                </button>
+                                            </div>
+                                        </form>
                                     </div>
-                                {% endfor %}
-                                <div class="card-footer py-1 border-0" style="background-color: #f8f9fa;">
-                                    <form action="" method="post">
-                                        {% csrf_token %}
-                                        <h5>Comment:</h5>
-                                        {% if form.subject.errors %}
-                                            <ol>
-                                                {% for error in form.subject.errors %}
-                                                    <li><strong>{{ error|escape }}</strong></li>
-                                                {% endfor %}
-                                            </ol>
-                                        {% endif %}
-                                        <div class="d-flex flex-start w-100">
-                                            <img class="rounded-circle shadow-1-strong me-3"
-                                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKEAAAChCAMAAACYjy+EAAAAMFBMVEXk5ueutLepr7Lo6erV2Nrb3t/h4+THy825v8Gxt7rO0tTq7O3Bxci1ur3DyMrY2936onKYAAADqElEQVR4nO2bUZOzKgxAgQAKKP7/f3tBe9va3X5C0ODO5Lzt7MuZpAQIUQiGYRiGYRiGYRiGYRiGYZjLARB20d5rYwX0lvkBiMVPTj1xkzZ30gx2GKVS8o0kOXoReps9MONO7o1obxBHsFF+E0z/GLrnGvw3u4ej011TDfZrgl+OQ09BMx8KJsWx268RdIHfiumjCLrQL7H0UKwRlLJDosGUpnjFGXJDO9cISjmSGx6XmT1qos0zDJWCSVFTKoKt9UvMltBQjAhDNRAGcanO8apIJxgcRlBKssUCuBASFkXA/ApXiI45sGAFpaMxFAPaUGkaQ3SS01GRZK0YtGCCQlB45Epeg0hxlg34JCco9hVAlusNiqJtG5JMc3zAbigb7nrD8gve71y/8QG+XmfUcnvD63eVP2AY2bDZ8P5Zvv9abjk4SJJ6ePs9pXFfHgkMoUWQ5GzzB86HTWdskvZSXWvzAwK/RGVv852R5nHl9vflhp6DJGoh4vs2kUYQfxFwZC8/2KJN0xNZwQVRUTayUX1syvcK1AGH4ljzIiDeUzzx017txkLUOnwBprLBNNP6ifqiSP82WncKI+lsNil2eaOvUFSdBHNZLFouruPkUsk4i5q6jlaBOCzd1IX6B+H7XFqe++obwA0Qi/vdUamx2xL5IJjJfQ7QKemivcv8YR4wtXodknzOcI5e3yC/O5KONYv3w+D9YqzoPnf4EwAIT+BefskMhNEpfDFOiRiHdaD4BqJZwC4+Pn6Bu2Wc/56nbfS5kyeEPOE8y73aZ73JmkNaNIHcEqwfy8+wbh4MZSTzePj8j8j9Hk0ZNdH6DiJXviq9/yXnyVye7RS+qTJ6e8vZX1rIQfixxW9zHC7bDAF0Q2/znatGl3TJ8HURSl2Q63QMPElvc5z9uWsGbH0X5NDxzAsqnJfgd0d/Wn1sfFL+rnjSBwNlnycgHc94AAq6aUbpiKm5NrY+Jx+hWntiEK8VlHnOqiXTMF0u2Ng0oRCUDR/YBCJB6ZCFkSTFD0XUM8HVq3gH5uuVxpmQShSiLraNhNQrVjfxYCIVrP9mgPRHuFH5UyTOcaYuz4E6x5maktM6jYtDxYognnonKac8iE0zP3hULC2KbZNdLYrFMewTQlk8t4b4nvEsSmtiryQnyqZkm77haSNdoUug3/BeFA1DEFyevlM2NHTp/fjIsOiE0zGEZceHThvKg5K9ucup4UnBGGqq1z1xBVsz9OVYkGEYhmEY5g/zHxF/Lvt2k+QVAAAAAElFTkSuQmCC"
-                                                 alt="avatar" width="40"
-                                                 height="40"/>
-                                            <div class="form-outline w-100">
-                                                {% for field in form %}
-                                                    <div class="fieldWrapper">
-                                                        {{ field.errors }}
-                                                        {{ field.label_tag }}{{ field }}
-                                                        {% if field.help_text %}
-                                                            <p class="help">{{ field.help_text|safe }}</p>
-                                                        {% endif %}
-
-
-                                                    </div>
-                                                {% endfor %}
-                                                <label class="form-label" for="textAreaExample">Message</label>
-                                            </div>
-                                        </div>
-                                        <div class="float-end mt-2 pt-1">
-                                            <button type="submit" class="btn btn-primary btn-sm">Post comment</button>
-                                            <button type="reset" class="btn btn-outline-primary btn-sm">Cancel</button>
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
         </div>
     </div>
 {% endblock %}

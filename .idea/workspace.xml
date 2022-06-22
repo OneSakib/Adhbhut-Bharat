@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="353e0298-f4ba-4467-a1a5-283cd38bcad2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainApp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApp/static/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/MainApp/static/logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/currentindia.html" beforeDir="false" afterPath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/currentindia.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/customandtradition.html" beforeDir="false" afterPath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/customandtradition.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/factsblog.html" beforeDir="false" afterPath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/factsblog.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/freedomfighter.html" beforeDir="false" afterPath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/freedomfighter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/historicalplace.html" beforeDir="false" afterPath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/historicalplace.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/indianhistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/indianhistory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/MainApp/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +76,11 @@
       <option name="presentableId" value="Default" />
       <updated>1655534512640</updated>
       <workItem from="1655534516066" duration="3443000" />
+      <workItem from="1655540709137" duration="1900000" />
+      <workItem from="1655544749384" duration="171000" />
+      <workItem from="1655636769717" duration="1071000" />
+      <workItem from="1655643925007" duration="613000" />
+      <workItem from="1655734969714" duration="1067000" />
     </task>
     <servers />
   </component>
