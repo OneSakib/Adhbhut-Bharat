@@ -15,7 +15,7 @@
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="Hindi">
-    <meta name="revisit-after" content=" days">
+    <meta name="revisit-after" content="days">
     <meta name="author" content="Sakib Malik">
 
     <!--Og Social Media tags-->
@@ -24,7 +24,7 @@
     <meta property="og:description"
           content="Adhbhut Bharat is a website for indian history , current india,facts, freedom fighter etc."/>
     <meta property="og:image"
-          content="https://adhbhutbharat.me/static/logo.png"/>
+          content="https://adhbhutbharat.me/static/logo.ico"/>
     <meta property="og:type" content="website"/>
 
     <!--Twitter tags-->
@@ -46,8 +46,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
             integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="
             crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link rel="icon" href="{% static 'logo.png' %}">
-    <link rel="apple-touch-icon" href="{% static 'logo.png' %}">
+    <link rel="icon" href="{% static 'logo.ico' %}">
+    <link rel="apple-touch-icon" href="{% static 'logo.ico' %}">
     <meta name="theme-color" content="#317EFB"/>
     <style>
         .navbar-nav {
@@ -101,7 +101,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'ADBH:index' %}"><img src="{% static 'logo.png' %}"
+        <a class="navbar-brand" href="{% url 'ADBH:index' %}"><img src="{% static 'logo.ico' %}"
                                                                    style="width: 100%; border-radius: 10px"
                                                                    alt="not found"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -158,10 +158,10 @@
 
 <!--  Footer  !-->
 <div class="container-lg">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top ">
         <div class="col-md-6 d-flex align-items-center">
-            <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-                <img src="{% static 'logo.png' %}" class="image w-100" alt="not found">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1 bg-success" style="border-radius: 5px;">
+                <img src="{% static 'logo.ico' %}" class="image w-100" alt="not found">
             </a>
             <span class="mb-3 mb-md-0 text-muted">© 2022 AdbhutBharat, Inc</span>
             <span class="mb-3 mb-md-0 text-muted">This site is developed by Sakib Malik</span>

@@ -297,8 +297,3 @@ class Comments(View):
             elif obj == 'custom':
                 CustomAndTraditionComments.objects.get(pk=pk).delete()
         return HttpResponseRedirect(reverse_lazy('ADBH:comments'))
-
-
-class SiteMap(View):
-    def get(self, request):
-        return render(request, 'sitemap.xml', content_type='text/xml')

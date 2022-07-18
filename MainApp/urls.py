@@ -2,8 +2,14 @@ from django.urls import path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+from .sitemaps import AB_sitemap
+from django.contrib.sitemaps.views import sitemap
 
 app_name = 'ADBH'
+
+sitemaps = dict()
+sitemaps.update(AB_sitemap)
+
 urlpatterns = [
                   path('', views.Index.as_view(), name='index'),
                   path('historicalplaces/', views.HistoricalPlaces.as_view(), name='historicalplaces'),
@@ -22,5 +28,6 @@ urlpatterns = [
                        name='customandtraditiondetail'),
                   path('searched/', views.Searched.as_view(), name='searched'),
                   path('comments/', views.Comments.as_view(), name='comments'),
-                  path('sitemap.xml/', views.SiteMap.as_view(), name='sitemap')
+                  path('sitemap.xml/', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap')
+
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -4,6 +4,7 @@ from PIL import Image
 import sys
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from io import BytesIO
+from django.urls import reverse_lazy
 
 # Create your models here.
 
@@ -44,9 +45,12 @@ class HistoricalPlaceModel(Common):
         im.save(output, format='JPEG', quality=100)
         output.seek(0)
         self.image = InMemoryUploadedFile(output, 'ImageFiled', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg',
-                                      
+
                                           sys.getsizeof(output), None)
         return super(HistoricalPlaceModel, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse_lazy('ADBH:historicalplacesdetail', kwargs={'slug': self.slug})
 
 
 class IndianHistoryModel(Common):
@@ -56,11 +60,17 @@ class IndianHistoryModel(Common):
         verbose_name_plural = 'IndianHistoryModel'
         ordering = ['-timestamp']
 
+    def get_absolute_url(self):
+        return reverse_lazy('ADBH:indianhistorydetail', kwargs={'slug': self.slug})
+
 
 class CurrentIndianModel(Common):
     class Meta:
         verbose_name_plural = 'CurrentIndianModel'
         ordering = ['-timestamp']
+
+    def get_absolute_url(self):
+        return reverse_lazy('ADBH:currentindiadetail', kwargs={'slug': self.slug})
 
 
 class FreedomFighterModel(Common):
@@ -80,6 +90,9 @@ class FreedomFighterModel(Common):
                                           sys.getsizeof(output), None)
         return super(FreedomFighterModel, self).save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse_lazy('ADBH:freedomfighterdetail', kwargs={'slug': self.slug})
+
 
 class FactBlogModel(Common):
     image = models.ImageField(upload_to='image/fact', null=True)
@@ -98,6 +111,9 @@ class FactBlogModel(Common):
                                           sys.getsizeof(output), None)
         return super(FactBlogModel, self).save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse_lazy('ADBH:factblogdetail', kwargs={'slug': self.slug})
+
 
 class CustomAndTraditionModel(Common):
     image = models.ImageField(upload_to='image/tradition', null=True)
@@ -115,6 +131,9 @@ class CustomAndTraditionModel(Common):
         self.image = InMemoryUploadedFile(output, 'ImageFiled', "%s.jpg" % self.image.name.split('.')[0], 'image/jpeg',
                                           sys.getsizeof(output), None)
         return super(CustomAndTraditionModel, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse_lazy('ADBH:customandtraditiondetail', kwargs={'slug': self.slug})
 
 
 class Comments(models.Model):

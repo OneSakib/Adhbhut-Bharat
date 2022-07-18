@@ -4,17 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="353e0298-f4ba-4467-a1a5-283cd38bcad2" name="Changes" comment="">
+    <list default="true" id="e63b5227-065a-464d-af76-d3884d111360" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/MainApp/sitemaps.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AdbhutBharat/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/AdbhutBharat/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MainApp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainApp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainApp/static/logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/MainApp/static/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/currentindia.html" beforeDir="false" afterPath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/currentindia.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/customandtradition.html" beforeDir="false" afterPath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/customandtradition.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/factsblog.html" beforeDir="false" afterPath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/factsblog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/freedomfighter.html" beforeDir="false" afterPath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/freedomfighter.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/historicalplace.html" beforeDir="false" afterPath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/historicalplace.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/indianhistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/MainApp/templates/ADBH/detail/indianhistory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApp/static/logo.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/MainApp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/MainApp/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApp/templates/sitemap.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainApp/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MainApp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/MainApp/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,18 +21,29 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2AjsnmAP8QoO0FRpr43EPpTMwVd" />
+  <component name="ProjectId" id="2B4u13M3gLB9RpRag6Msg0HieFR" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -70,21 +80,29 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="353e0298-f4ba-4467-a1a5-283cd38bcad2" name="Changes" comment="" />
-      <created>1655534512640</created>
+      <changelist id="e63b5227-065a-464d-af76-d3884d111360" name="Changes" comment="" />
+      <created>1656177468307</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1655534512640</updated>
-      <workItem from="1655534516066" duration="3443000" />
-      <workItem from="1655540709137" duration="1900000" />
-      <workItem from="1655544749384" duration="171000" />
-      <workItem from="1655636769717" duration="1071000" />
-      <workItem from="1655643925007" duration="613000" />
-      <workItem from="1655734969714" duration="1067000" />
+      <updated>1656177468307</updated>
+      <workItem from="1656177472463" duration="830000" />
+      <workItem from="1656253708965" duration="1241000" />
+      <workItem from="1656315047722" duration="12000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

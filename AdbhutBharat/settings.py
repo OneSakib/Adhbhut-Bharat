@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-import os.path
 from pathlib import Path
 import os
 
@@ -20,12 +19,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ul^i@4-jgyo$$z=y!#39-+6zi9#dn^c2-2)h7f)k4+x%@!q@we'
+# SECRET_KEY = 'django-insecure-ul^i@4-jgyo$$z=y!#39-+6zi9#dn^c2-2)h7f)k4+x%@!q@we'
+SECRET_KEY=os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1","167.71.7.79"]
+ALLOWED_HOSTS = ["127.0.0.1","adbhutbharat.herokuapp.com"]
 
 # Application definition
 
@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
     'MainApp',
     "crispy_forms",
     "crispy_bootstrap5",
@@ -155,3 +156,6 @@ TINYMCE_DEFAULT_CONFIG = {
     'menubar': True,
     'statusbar': True,
 }
+
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_SSL_REDIRECT = True
