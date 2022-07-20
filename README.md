@@ -1,4 +1,4 @@
-[![Python 3.10 ](https://img.shields.io/badge/python-3.10-yellow.svg)]https://www.python.org/downloads/release/python-3105/)
+[![Python 3.10 ](https://img.shields.io/badge/python-3.10-yellow.svg)](https://www.python.org/downloads/release/python-3105/)
 ![Django 4 ](https://img.shields.io/badge/Django-4.0-green.svg)
 # Adhbhut Bharat
 
@@ -6,7 +6,7 @@
 
 **1.clone Repository & Install Packages**
 ```sh
-git clone https://github.com/shyam999/Django-ecommerce.git
+git clone https://github.com/OneSakib/Adhbhut-Bharat.git
 pip install -r requirements.txt
 ```
 **2.Setup Virtualenv**
