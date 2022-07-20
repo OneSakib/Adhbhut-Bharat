@@ -1,27 +1,23 @@
+[![Python 3.10 ](https://img.shields.io/badge/python-3.10-yellow.svg)]https://www.python.org/downloads/release/python-3105/)
+![Django 4 ](https://img.shields.io/badge/Django-4.0-green.svg)
+# Adhbhut Bharat
 
-.. image:: https://github.com/django/djangoproject.com/workflows/Tests/badge.svg?branch=main
-    :target: https://github.com/django/djangoproject.com/actions
+## Installation
 
-.. image:: https://coveralls.io/repos/django/djangoproject.com/badge.svg?branch=main
-    :target: https://coveralls.io/r/django/djangoproject.com?branch=main
+**1.clone Repository & Install Packages**
+```sh
+git clone https://github.com/shyam999/Django-ecommerce.git
+pip install -r requirements.txt
+```
+**2.Setup Virtualenv**
+```sh
+virtualenv env
+source env/bin/activate
+```
+**3.Migrate & Start Server**
+```sh
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+```
 
-To run locally, do the usual:
-
-#. Create a Python 4 virtualenv
-    virtualenv venv
-    source venv/bin/activate
-
-#. Install dependencies::
-
-    pip install -r requirements/dev.txt
-    
-#. Create databases::
-    python manage.py makemigrations 
-    python manage.py migrate
-
-#. Create a superuser::
-
-   python manage.py createsuperuser
-
-#. Finally, run the server::
-   python manage.py runserver
